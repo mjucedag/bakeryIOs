@@ -56,6 +56,7 @@ class LoginViewController: UIViewController {
                 }
             }else{
                 //Segue
+                print("pero tu si")
             }
         }) as? [Product] ?? []
     }
