@@ -15,6 +15,8 @@
 		2D482F38201E0AF800967FCA /* bakeryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482F37201E0AF800967FCA /* bakeryTests.swift */; };
 		2D482F43201E0AF800967FCA /* bakeryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482F42201E0AF800967FCA /* bakeryUITests.swift */; };
 		C501440020442B7400B0EB2F /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50143FF20442B7400B0EB2F /* CollectionViewCell.swift */; };
+		C5427F58204560A600C8B23A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5427F57204560A600C8B23A /* Product.swift */; };
+		C5427F5A204560C500C8B23A /* DBConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5427F59204560C500C8B23A /* DBConnection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		2D482F42201E0AF800967FCA /* bakeryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bakeryUITests.swift; sourceTree = "<group>"; };
 		2D482F44201E0AF800967FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C50143FF20442B7400B0EB2F /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		C5427F57204560A600C8B23A /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = "../../../../../Desktop/conexion/bakeryIOs-inicio_conexion/Model/POSO/Product.swift"; sourceTree = "<group>"; };
+		C5427F59204560C500C8B23A /* DBConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DBConnection.swift; path = "../../../../Desktop/conexion/bakeryIOs-inicio_conexion/Model/DBConnection.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		2D482F21201E0AF800967FCA /* bakery */ = {
 			isa = PBXGroup;
 			children = (
+				C5427F552045606600C8B23A /* model */,
 				2D482F22201E0AF800967FCA /* AppDelegate.swift */,
 				2D482F24201E0AF800967FCA /* LoginViewController.swift */,
 				2D482F26201E0AF800967FCA /* Main.storyboard */,
@@ -126,6 +131,23 @@
 				2D482F44201E0AF800967FCA /* Info.plist */,
 			);
 			path = bakeryUITests;
+			sourceTree = "<group>";
+		};
+		C5427F552045606600C8B23A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				C5427F59204560C500C8B23A /* DBConnection.swift */,
+				C5427F562045607C00C8B23A /* POSO */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		C5427F562045607C00C8B23A /* POSO */ = {
+			isa = PBXGroup;
+			children = (
+				C5427F57204560A600C8B23A /* Product.swift */,
+			);
+			path = POSO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +285,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D482F25201E0AF800967FCA /* LoginViewController.swift in Sources */,
+				C5427F58204560A600C8B23A /* Product.swift in Sources */,
 				2D482F23201E0AF800967FCA /* AppDelegate.swift in Sources */,
 				C501440020442B7400B0EB2F /* CollectionViewCell.swift in Sources */,
+				C5427F5A204560C500C8B23A /* DBConnection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
