@@ -16,8 +16,6 @@ class LoginViewController: UIViewController {
     
     var products:[Product] = []
     
-    var response:[String:Any] = [:]
-    
     @IBAction func login(_ sender: UIButton) {
         error.isHidden = true
         error.text = ""
@@ -56,14 +54,15 @@ class LoginViewController: UIViewController {
                 }
             }else{
                 DispatchQueue.main.async {
+                    let num2 = self.products.count
+                    print("num de productos2 : \(num2)")
                     self.performSegue(withIdentifier: "loginSegue", sender: self)
                 }
             }
         }) as? [Product] ?? []
-        
+        let num = products.count
+        print("num de productos : \(num)")
     }
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

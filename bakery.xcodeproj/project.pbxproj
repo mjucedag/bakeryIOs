@@ -14,7 +14,8 @@
 		2D482F2D201E0AF800967FCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D482F2B201E0AF800967FCA /* LaunchScreen.storyboard */; };
 		2D482F38201E0AF800967FCA /* bakeryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482F37201E0AF800967FCA /* bakeryTests.swift */; };
 		2D482F43201E0AF800967FCA /* bakeryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482F42201E0AF800967FCA /* bakeryUITests.swift */; };
-		C501440020442B7400B0EB2F /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50143FF20442B7400B0EB2F /* CollectionViewCell.swift */; };
+		A19D2BB42047174400CACBC4 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19D2BB32047174400CACBC4 /* CollectionViewCell.swift */; };
+		A19D2BB620471A7C00CACBC4 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19D2BB520471A7C00CACBC4 /* CollectionViewController.swift */; };
 		C50B1AA42045CD5A00316F9B /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B1AA32045CD5A00316F9B /* Product.swift */; };
 		C50B1AA62045CD9A00316F9B /* DBConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50B1AA52045CD9A00316F9B /* DBConnection.swift */; };
 /* End PBXBuildFile section */
@@ -50,7 +51,8 @@
 		2D482F3E201E0AF800967FCA /* bakeryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bakeryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D482F42201E0AF800967FCA /* bakeryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bakeryUITests.swift; sourceTree = "<group>"; };
 		2D482F44201E0AF800967FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C50143FF20442B7400B0EB2F /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		A19D2BB32047174400CACBC4 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		A19D2BB520471A7C00CACBC4 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		C50B1AA32045CD5A00316F9B /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		C50B1AA52045CD9A00316F9B /* DBConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBConnection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,7 +112,8 @@
 				2D482F29201E0AF800967FCA /* Assets.xcassets */,
 				2D482F2B201E0AF800967FCA /* LaunchScreen.storyboard */,
 				2D482F2E201E0AF800967FCA /* Info.plist */,
-				C50143FF20442B7400B0EB2F /* CollectionViewCell.swift */,
+				A19D2BB32047174400CACBC4 /* CollectionViewCell.swift */,
+				A19D2BB520471A7C00CACBC4 /* CollectionViewController.swift */,
 			);
 			path = bakery;
 			sourceTree = "<group>";
@@ -284,10 +287,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A19D2BB620471A7C00CACBC4 /* CollectionViewController.swift in Sources */,
+				A19D2BB42047174400CACBC4 /* CollectionViewCell.swift in Sources */,
 				2D482F25201E0AF800967FCA /* LoginViewController.swift in Sources */,
 				C50B1AA42045CD5A00316F9B /* Product.swift in Sources */,
 				2D482F23201E0AF800967FCA /* AppDelegate.swift in Sources */,
-				C501440020442B7400B0EB2F /* CollectionViewCell.swift in Sources */,
 				C50B1AA62045CD9A00316F9B /* DBConnection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

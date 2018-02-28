@@ -115,10 +115,10 @@
             </objects>
             <point key="canvasLocation" x="136.23188405797103" y="132.88043478260872"/>
         </scene>
-        <!--View Controller-->
+        <!--Collection View Controller-->
         <scene sceneID="TDy-31-gri">
             <objects>
-                <viewController id="8MI-Tb-Wf2" sceneMemberID="viewController">
+                <viewController id="8MI-Tb-Wf2" customClass="CollectionViewController" customModule="bakery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qyg-mJ-VSu" customClass="CollectionViewCell" customModule="bakery" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,14 +133,29 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="plx-Es-Eup">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="productCell" id="plx-Es-Eup" customClass="CollectionViewCell" customModule="bakery" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="180" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RH2-H2-yPu">
+                                                    <rect key="frame" x="9" y="9" width="163" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHD-ZY-cS5">
+                                                    <rect key="frame" x="9" y="147" width="163" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
                                         <connections>
+                                            <outlet property="ivProduct" destination="RH2-H2-yPu" id="MiF-PN-DbF"/>
+                                            <outlet property="lProduct" destination="KHD-ZY-cS5" id="3Ma-GP-dAY"/>
                                             <segue destination="IKZ-px-a5S" kind="showDetail" id="sjI-Rh-9p2"/>
                                         </connections>
                                     </collectionViewCell>
@@ -162,6 +177,10 @@
                                         </label>
                                     </subviews>
                                 </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="8MI-Tb-Wf2" id="bWa-yj-Pwz"/>
+                                    <outlet property="delegate" destination="8MI-Tb-Wf2" id="yMc-1R-csA"/>
+                                </connections>
                             </collectionView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PFR-5n-q7B">
                                 <rect key="frame" x="0.0" y="687" width="414" height="49"/>
@@ -192,6 +211,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="M7r-to-B6p"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="V81-ml-1gt" id="V5a-1n-xMd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKL-2U-Pb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
