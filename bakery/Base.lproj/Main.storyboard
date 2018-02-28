@@ -108,6 +108,7 @@
                         <outlet property="error" destination="gaf-yT-zWY" id="nAO-hU-GlS"/>
                         <outlet property="tfPassword" destination="NWp-nO-1Ar" id="uUF-KE-hQJ"/>
                         <outlet property="tfUser" destination="8hU-kA-2oJ" id="WT9-L0-gxr"/>
+                        <segue destination="8MI-Tb-Wf2" kind="presentation" identifier="loginSegue" id="Fw1-n7-Mlv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

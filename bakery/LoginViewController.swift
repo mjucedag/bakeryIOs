@@ -48,17 +48,19 @@ class LoginViewController: UIViewController {
         let user = tfUser.text!
         let password = tfPassword.text!
         
-        self.products = con.getData(table: "product", user: user, password: password, {(x:Bool)->Void in
-            if x{
+        self.products = con.getData(table: "product", user: user, password: password, {(correcto:Bool)->Void in
+            if correcto{
                 DispatchQueue.main.async {
                     self.error.text = "Login Failed"
                     self.error.isHidden = false
                 }
             }else{
-                //Segue
-                print("pero tu si")
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "loginSegue", sender: self)
+                }
             }
         }) as? [Product] ?? []
+        
     }
 
     
