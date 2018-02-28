@@ -20,6 +20,8 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         }
         
     }
+    let products = ["1", "2", "3", "4", "5", "6"]
+    
     let imgElementos: [UIImage] = [
         
         UIImage(named: "pastries")!,
@@ -43,21 +45,25 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     // MARK: DataSource
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        return productos.count
+        return products.count
     }
     
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! CollectionViewCell
         
-        for product in productos {
-            cell.lProduct.text = product.name
+        for producto in productos {
+            cell.lProduct.text = producto.name
             cell.ivProduct.image = imgElementos[indexPath.item]
         }
         print("numero de productos: \(productos.count)")
         
         return cell
     }
+//    //Para las secciones
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
