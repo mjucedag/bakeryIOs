@@ -9,5 +9,5 @@
 import UIKit
 
 class DataBase {
-    public static products
+    public static var products:[Product] = []
 }
