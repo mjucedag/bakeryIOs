@@ -6,8 +6,6 @@ class DBConnection{
     private let dbURL = "https://bakery-server-franor21.c9users.io/";
     private var token:String = ""
     
-    
-    
     func getData(table: String, user: String, password: String, extra:String = "-1") -> Any{
         var urlString = dbURL
         urlString += table
