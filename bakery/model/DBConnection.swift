@@ -60,21 +60,15 @@ class DBConnection{
         group.wait()
     }
     
-    func checkToken()->Bool{
-        return token != ""
-    }
-    
-    func postData(table: String, extra: String) {
+    func postTicket(extra: String) {
         var urlString = dbURL
-        urlString += table
-        guard let urlCon = URL(string: urlString) else {return }
+        urlString += "ticket"
+        guard let urlCon = URL(string: urlString) else {return}
         
         let request = NSMutableURLRequest(url: urlCon)
         
-        let data = "migue:123".data(using: .utf8)
-        let author = data!.base64EncodedString()
         
-        request.setValue("Basic \(author)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         
         
