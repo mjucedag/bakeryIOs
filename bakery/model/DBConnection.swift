@@ -14,14 +14,11 @@ class DBConnection{
     private let dbURL = "https://bakery-server-franor21.c9users.io/";
     private var token:String = ""
     
-    public  enum ConError: Error {
-        case LoginFailed
-    }
     
-    func getData(table: String, user: String, password: String, _ callback:@escaping (Bool)->Void, extra:String = "-1") -> Any {
+    func getData(table: String, user: String, password: String,  products: inout [Product]) {
         var urlString = dbURL
         urlString += table
-        guard let urlCon = URL(string: urlString) else {return "404"}
+        guard let urlCon = URL(string: urlString) else {return}
         
         let request = NSMutableURLRequest(url: urlCon)
         
@@ -31,13 +28,12 @@ class DBConnection{
         request.setValue("Basic \(author)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
         
-        var products:[Product] = []
-        
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         }
-        
+        let group = DispatchGroup()
         let colaGlobal = DispatchQueue.global()
+        group.enter()
         colaGlobal.async {
             defer{
                 DispatchQueue.main.async{
@@ -47,12 +43,8 @@ class DBConnection{
             
             URLSession.shared.dataTask(with: request as URLRequest){ (data, response, error) in
                 guard let data = data else{return}
-                var er = false
                 do{
                     let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:Any]
-                    if json["e"] != nil {
-                        er = true
-                    }
                     self.token = json["t"] as? String ?? ""
                     
                     let results = json["r"] as? [[String:Any]] ?? nil
@@ -60,14 +52,12 @@ class DBConnection{
                         products.append( Product(json: row)!)
                     }
                 }catch {
-                    er = true
+                    
                 }
-                callback(er)
+                group.leave()
                 }.resume()
-            
         }
-        
-        return products
+        group.wait()
     }
     
     func checkToken()->Bool{

@@ -12,22 +12,63 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var productos:[Product] = []
+    var arrayProd:[Product] = []
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destino = segue.destination as? LoginViewController{
-            destino.products = productos
+            destino.products = arrayProd
         }
         
     }
-    let products = ["1", "2", "3", "4", "5", "6"]
     
-    let imgElementos: [UIImage] = [
+    let imgProducts: [UIImage] = [
         
         UIImage(named: "pastries")!,
         UIImage(named: "christmas")!,
         UIImage(named: "croissant")!,
         UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "christmas")!,
+        UIImage(named: "croissant")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "christmas")!,
+        UIImage(named: "croissant")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "christmas")!,
+        UIImage(named: "croissant")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "bread")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "christmas")!,
+        UIImage(named: "croissant")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "christmas")!,
+        UIImage(named: "croissant")!,
     ]
     
     override func viewDidLoad() {
@@ -40,23 +81,21 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     // MARK: Delegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-        
+//        print("celda seleccionada \(indexPath.row)")
     }
     
     // MARK: DataSource
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        return products.count
+        print("num de productos \(arrayProd.count)")
+        return arrayProd.count
     }
     
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! CollectionViewCell
-        
-        for producto in productos {
-            cell.lProduct.text = producto.name
-            cell.ivProduct.image = imgElementos[indexPath.item]
-        }
-        print("numero de productos: \(productos.count)")
+
+        cell.ivProduct.image = imgProducts[indexPath.item]
+//        cell.lProduct.text = arrayProd[indexPath.item]
         
         return cell
     }

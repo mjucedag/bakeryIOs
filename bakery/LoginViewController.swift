@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var tfUser: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var error: UILabel!
-    
+    let group = DispatchGroup()
     var products:[Product] = []
     
     @IBAction func login(_ sender: UIButton) {
@@ -46,22 +46,11 @@ class LoginViewController: UIViewController {
         let user = tfUser.text!
         let password = tfPassword.text!
         
-        self.products = con.getData(table: "product", user: user, password: password, {(correcto:Bool)->Void in
-            if correcto{
-                DispatchQueue.main.async {
-                    self.error.text = "Login Failed"
-                    self.error.isHidden = false
-                }
-            }else{
-                DispatchQueue.main.async {
-                    let num2 = self.products.count
-                    print("num de productos2 : \(num2)")
-                    self.performSegue(withIdentifier: "loginSegue", sender: self)
-                }
-            }
-        }) as? [Product] ?? []
-        let num = products.count
-        print("num de productos : \(num)")
+        con.getData(table: "product", user: user, password: password, products: &self.products)
+        
+        print("productos = \(products.count)")
+        
+        performSegue(withIdentifier: "loginSegue", sender: self)
     }
     
     override func viewDidLoad() {
