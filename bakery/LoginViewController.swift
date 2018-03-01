@@ -14,7 +14,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var error: UILabel!
     let group = DispatchGroup()
-    var products:[Product] = []
     
     @IBAction func login(_ sender: UIButton) {
         error.isHidden = true
@@ -46,9 +45,9 @@ class LoginViewController: UIViewController {
         let user = tfUser.text!
         let password = tfPassword.text!
         
-        con.getData(table: "product", user: user, password: password, products: &self.products)
+        con.getData(table: "product", user: user, password: password, products: &DataBase.products)
         
-        print("productos = \(products.count)")
+        print("productos = \(DataBase.products.count)")
         
         performSegue(withIdentifier: "loginSegue", sender: self)
     }

@@ -12,12 +12,9 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var arrayProd:[Product] = []
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destino = segue.destination as? LoginViewController{
-            destino.products = arrayProd
-        }
+        
         
     }
     
@@ -86,8 +83,8 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     // MARK: DataSource
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        print("num de productos \(arrayProd.count)")
-        return arrayProd.count
+        print("num de productos \(DataBase.products.count)")
+        return DataBase.products.count
     }
     
     
