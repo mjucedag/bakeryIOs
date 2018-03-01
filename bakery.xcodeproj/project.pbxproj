@@ -14,6 +14,7 @@
 		2D482F2D201E0AF800967FCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D482F2B201E0AF800967FCA /* LaunchScreen.storyboard */; };
 		2D482F38201E0AF800967FCA /* bakeryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482F37201E0AF800967FCA /* bakeryTests.swift */; };
 		2D482F43201E0AF800967FCA /* bakeryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482F42201E0AF800967FCA /* bakeryUITests.swift */; };
+		3324037A20481E1C00818DB5 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324037920481E1C00818DB5 /* Ticket.swift */; };
 		33A772BC2036E1160036B200 /* DBConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A772BB2036E1160036B200 /* DBConnection.swift */; };
 		33A772BF2036F9A90036B200 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A772BE2036F9A90036B200 /* Product.swift */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,7 @@
 		2D482F3E201E0AF800967FCA /* bakeryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bakeryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D482F42201E0AF800967FCA /* bakeryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bakeryUITests.swift; sourceTree = "<group>"; };
 		2D482F44201E0AF800967FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3324037920481E1C00818DB5 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		33A772BB2036E1160036B200 /* DBConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBConnection.swift; sourceTree = "<group>"; };
 		33A772BE2036F9A90036B200 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				33A772BE2036F9A90036B200 /* Product.swift */,
+				3324037920481E1C00818DB5 /* Ticket.swift */,
 			);
 			path = POSO;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			files = (
 				33A772BC2036E1160036B200 /* DBConnection.swift in Sources */,
 				33A772BF2036F9A90036B200 /* Product.swift in Sources */,
+				3324037A20481E1C00818DB5 /* Ticket.swift in Sources */,
 				2D482F25201E0AF800967FCA /* LoginViewController.swift in Sources */,
 				2D482F23201E0AF800967FCA /* AppDelegate.swift in Sources */,
 			);
