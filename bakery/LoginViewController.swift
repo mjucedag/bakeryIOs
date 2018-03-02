@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
         let con = DBConnection()
         let user = tfUser.text!
         let password = tfPassword.text!
-        
+        DataBase.setCredentials(user: user, pass: password)
         con.getData(table: "product", user: user, password: password, products: &DataBase.products)
         
         print("productos = \(DataBase.products.count)")
