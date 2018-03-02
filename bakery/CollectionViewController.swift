@@ -8,101 +8,122 @@
 
 import UIKit
 
-class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
+    var buscando = false
+    var filterData = [String]()
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
+    var productName = [String]()
+    private func getNombreProduct(){
+        for producto in DataBase.products{
+            productName.append(producto.name)
+        }
     }
     
     let imgProducts: [UIImage] = [
         
         UIImage(named: "pastries")!,
-        UIImage(named: "christmas")!,
-        UIImage(named: "croissant")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
         UIImage(named: "pastries")!,
-        UIImage(named: "christmas")!,
-        UIImage(named: "croissant")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
         UIImage(named: "pastries")!,
-        UIImage(named: "christmas")!,
-        UIImage(named: "croissant")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
         UIImage(named: "pastries")!,
-        UIImage(named: "christmas")!,
-        UIImage(named: "croissant")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
-        UIImage(named: "bread")!,
         UIImage(named: "pastries")!,
-        UIImage(named: "christmas")!,
-        UIImage(named: "croissant")!,
         UIImage(named: "pastries")!,
-        UIImage(named: "christmas")!,
-        UIImage(named: "croissant")!,
-    ]
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "pastries")!,
+        ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.delegate? = self
-        collectionView.dataSource? = self
+        //        collectionView.delegate? = self
+        //        collectionView.dataSource? = self
+        //        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.done
+        getNombreProduct()
         
-        // Do any additional setup after loading the view.
     }
     
     // MARK: Delegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-//        print("celda seleccionada \(indexPath.row)")
+        
     }
     
     // MARK: DataSource
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        print("num de productos \(DataBase.products.count)")
+        if buscando {
+            return filterData.count
+        }
         return DataBase.products.count
     }
     
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! CollectionViewCell
-
+        
+        let textoLabel : String!
+        
+        if buscando {
+            textoLabel = filterData[indexPath.row]
+        }else{
+            textoLabel = productName[indexPath.item]
+        }
+        
         cell.ivProduct.image = imgProducts[indexPath.item]
-//        cell.lProduct.text = arrayProd[indexPath.item]
+        cell.lbProduct.text = textoLabel
         
         return cell
     }
-//    //Para las secciones
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        
-//    }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            buscando = false
+            view.endEditing(true)
+            collectionView.reloadData()
+        }else{
+            buscando = true
+            filterData = productName.filter({$0 == searchBar.text})
+            collectionView.reloadData()
+        }
     }
+    
 }

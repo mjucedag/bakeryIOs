@@ -12,18 +12,8 @@ import UIKit
 class DBConnection{
     
     private let dbURL = "https://bakery-server-franor21.c9users.io/";
+    private var token:String = ""
     
-    func connect(){
-        
-        let credentials = DataBase.getCredentials()
-        let urlString = dbURL + "login"
-        guard let urlCon = URL(string: urlString) else {return}
-        let request = NSMutableURLRequest(url: urlCon)
-        
-        request.setValue("Basic \(credentials)", forHTTPHeaderField: "Authorization")
-        request.httpMethod = "GET"
-        
-    }
     
     func getData(table: String, user: String, password: String,  products: inout [Product]) {
         var urlString = dbURL
@@ -32,25 +22,18 @@ class DBConnection{
         
         let request = NSMutableURLRequest(url: urlCon)
         
+        let data = "\(user):\(password)".data(using: .utf8)
+        let author = data!.base64EncodedString()
         
-        let credentials = DataBase.getCredentials()
-        request.setValue("Bearer \(DataBase.token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Basic \(author)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
         
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         }
-        let results = query(request: request )
-        results.forEach{ row in
-            DataBase.products.append( Product(json: row)!)
-        }
-    }
-    
-    func query(request:NSMutableURLRequest) -> [[String:Any]]{
         let group = DispatchGroup()
         let colaGlobal = DispatchQueue.global()
         group.enter()
-        var results:[[String:Any]] = [[:]]
         colaGlobal.async {
             defer{
                 DispatchQueue.main.async{
@@ -62,18 +45,19 @@ class DBConnection{
                 guard let data = data else{return}
                 do{
                     let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:Any]
-                    DataBase.token = json["t"] as? String ?? ""
+                    self.token = json["t"] as? String ?? ""
                     
-                    results = json["r"] as? [[String:Any]] ?? [[:]]
-                    
+                    let results = json["r"] as? [[String:Any]] ?? nil
+                    results?.forEach{ row in
+                        products.append( Product(json: row)!)
+                    }
                 }catch {
-                    return
+                    
                 }
                 group.leave()
                 }.resume()
         }
         group.wait()
-        return results
     }
     
     func postTicket(extra: String) {
@@ -83,8 +67,10 @@ class DBConnection{
         
         let request = NSMutableURLRequest(url: urlCon)
         
-        request.setValue("Bearer \(DataBase.token)", forHTTPHeaderField: "Authorization")
+        
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
+        
         
         request.httpBody = extra.data(using: .utf8)
         
@@ -105,10 +91,12 @@ class DBConnection{
                 do{
                     let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:Any]
                     print("json:\(json)")
-                    DataBase.token = json["t"] as? String ?? ""
+                    self.token = json["t"] as? String ?? ""
+                    
+                    print("Token: \(self.token)")
                     
                     let results = json["r"] as? [[String:Any]] ?? nil
-                    print(results)
+                    
                 }catch {
                     print("error")
                 }

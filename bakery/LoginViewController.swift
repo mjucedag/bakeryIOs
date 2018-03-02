@@ -39,12 +39,12 @@ class LoginViewController: UIViewController {
         
         tfPassword.layer.borderColor = UIColor.white.cgColor
         tfPassword.layer.borderWidth = 1.0
-
+        
         //hacer la conexion
         let con = DBConnection()
         let user = tfUser.text!
         let password = tfPassword.text!
-        DataBase.setCredentials(user: user, pass: password)
+        
         con.getData(table: "product", user: user, password: password, products: &DataBase.products)
         
         print("productos = \(DataBase.products.count)")
@@ -57,12 +57,12 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
