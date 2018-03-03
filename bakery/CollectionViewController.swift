@@ -56,7 +56,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         print("celda seleccionada \(DataBase.products[indexPath.item].name)")
         let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let desVC = mainStoryboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        desVC.image = imgProducts[indexPath.row]
+        desVC.image = DataBase.products[indexPath.item].image
         desVC.name = DataBase.products[indexPath.item].name
         desVC.desc = DataBase.products[indexPath.item].description
         desVC.price = String(DataBase.products[indexPath.item].price)
