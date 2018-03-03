@@ -18,10 +18,10 @@ struct Product: Hashable{
     
     init?(json:Any){
         guard let json = json as? [String:Any] else{return nil}
-        id = json["id"] as? Int ?? -1
-        idFamily = json["idfamily"] as? Int ?? -1
+        id = Int(json["id"] as? String ?? "-1")!
+        idFamily = Int(json["idfamily"] as? String ?? "-1")!
         name = json["product"] as? String ?? "noname"
-        price = json["price"] as? Double ?? -1
+        price = Double(json["price"] as? String ?? "-1")!
         description = json["description"] as? String ?? "No description for this product"
         image = UIImage(named: "logo")!
     }

@@ -50,6 +50,7 @@ class LoginViewController: UIViewController {
         con.getData(table: "product")
         
         print("productos = \(DataBase.products.count)")
+        let p = DataBase.products
         return true
     }
     
