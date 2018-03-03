@@ -43,7 +43,16 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     // MARK: Delegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        print("celda seleccionada \(DataBase.products[indexPath.item].name)")
+        let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let desVC = mainStoryboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        desVC.image = imgProducts[indexPath.row]
+        desVC.name = DataBase.products[indexPath.item].name
+        desVC.desc = DataBase.products[indexPath.item].description
+        desVC.price = DataBase.products[indexPath.item].price
+        desVC.id = DataBase.products[indexPath.item].id
         
+        self.navigationController?.pushViewController(desVC, animated: true)
     }
     
     // MARK: DataSource
@@ -53,11 +62,10 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         }
         return DataBase.products.count
     }
-    
-    
+
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! CollectionViewCell
-        
+
         let textoLabel : String!
         
         if buscando {
@@ -71,6 +79,21 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         return cell
     }
     
+    // Section
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+        //Pinta 4 veces todos los elementos
+        return categorias.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionView", for: indexPath) as! SectionView
+        header.imCategoria.image = imgCategorias[indexPath.section]
+        header.lbCategoria.text = categorias[indexPath.section]
+        
+        return header
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == nil || searchBar.text == "" {
             buscando = false
@@ -82,5 +105,4 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             collectionView.reloadData()
         }
     }
-    
 }

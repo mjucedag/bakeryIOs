@@ -18,7 +18,7 @@ struct Ticket{
         var output = ""
         products.forEach({
             (pr) in
-            output += "{\"product\": \(pr.key.id), \"quantity\": \(pr.value), \"price\": \(pr.key.price * Double(pr.value))},"
+            output += "{\"product\": \(pr.key.id), \"quantity\": \(pr.value), \"price\": \(Double(pr.key.price)! * Double(pr.value))},"
         })
         output = String(output.prefix(output.count-1))
         return output

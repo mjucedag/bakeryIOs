@@ -10,12 +10,14 @@ import UIKit
 
 class SectionHeaderView : UICollectionReusableView{
     
-//    @IBOutlet weak var lCategoria: UILabel!
+    @IBOutlet weak var lbCategoria: UILabel!
+    @IBOutlet weak var ivCategoria: UIImageView!
 //    
-//    var tituloCategoria: String! {
+//    var categoriaFoto: String! {
 //        didSet{
-//            lCategoria.text = tituloCategoria
+//            lbCategoria.text = categoriaFoto
+//            ivCategoria.image = UIImage(named: categoriaFoto.)
 //        }
 //    }
-}
 
+}
