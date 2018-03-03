@@ -29,11 +29,9 @@ class LoginViewController: UIViewController {
         
         tfPassword.layer.borderColor = UIColor.white.cgColor
         tfPassword.layer.borderWidth = 1.0
-        
+
         //hacer la conexion
         if !connect() {return}
-        
-        print(DataBase.member)
         
         performSegue(withIdentifier: "loginSegue", sender: self)
     }
@@ -42,8 +40,7 @@ class LoginViewController: UIViewController {
         let con = DBConnection()
         let user = tfUser.text!
         let password = tfPassword.text!
-        
-        con.getData(table: "product", user: user, password: password, products: &DataBase.products)
+        DataBase.setCredentials(user: user, pass: password)
         
         let connected = con.connect()
         if !connected {showError(msg: con.getError()); return false}
@@ -51,7 +48,6 @@ class LoginViewController: UIViewController {
         con.getData(table: "product")
         
         print("productos = \(DataBase.products.count)")
-        let p = DataBase.products
         return true
     }
     
@@ -60,12 +56,17 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
+    func showError(msg:String){
+        error.isHidden = false
+        error.text = msg
+    }
+
+
 }
 

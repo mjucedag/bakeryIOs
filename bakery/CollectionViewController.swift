@@ -22,56 +22,13 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             productName.append(producto.name)
         }
     }
+    private func getImageProduct(){
+        for producto in DataBase.products{
+            imgProducts.append(producto.image)
+        }
+    }
     
-    let imgProducts: [UIImage] = [
-        
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "pastries")!,
-        ]
+    var imgProducts: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +37,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         //        searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
         getNombreProduct()
+        getImageProduct()
         
     }
     
@@ -107,7 +65,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         }else{
             textoLabel = productName[indexPath.item]
         }
-        
         cell.ivProduct.image = imgProducts[indexPath.item]
         cell.lbProduct.text = textoLabel
         

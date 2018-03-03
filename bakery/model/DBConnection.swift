@@ -4,8 +4,20 @@ import UIKit
 class DBConnection{
     
     private let dbURL = "https://bakery-server-franor21.c9users.io/";
-    private var token:String = ""
+    public var conError = 200
     
+    func connect()->Bool{
+        let credentials = DataBase.getCredentials()
+        let urlString = dbURL + "login"
+        guard let urlCon = URL(string: urlString) else {return false}
+        let request = NSMutableURLRequest(url: urlCon)
+        
+        request.setValue("Basic \(credentials)", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "GET"
+        _ = query(request)
+        print(conError)
+        return conError == 200
+    }
     
     func getData(table: String) {
         var urlString = dbURL
@@ -14,18 +26,24 @@ class DBConnection{
         
         let request = NSMutableURLRequest(url: urlCon)
         
-        let data = "\(user):\(password)".data(using: .utf8)
-        let author = data!.base64EncodedString()
-        
-        request.setValue("Basic \(author)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(DataBase.token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
+        
+        let results = query(request)
+        results.forEach{ row in
+            DataBase.products.append( Product(json: row)!)
+        }
+    }
+    
+    func query(_ request:NSMutableURLRequest) -> [[String:Any]]{
+        let group = DispatchGroup()
+        let colaGlobal = DispatchQueue.global()
+        group.enter()
+        var results:[[String:Any]] = [[:]]
         
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         }
-        let group = DispatchGroup()
-        let colaGlobal = DispatchQueue.global()
-        group.enter()
         colaGlobal.async {
             defer{
                 DispatchQueue.main.async{
@@ -36,20 +54,28 @@ class DBConnection{
                 guard let data = data else{return}
                 do{
                     let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:Any]
-                    self.token = json["t"] as? String ?? ""
-                    
-                    let results = json["r"] as? [[String:Any]] ?? nil
-                    results?.forEach{ row in
-                        products.append( Product(json: row)!)
+                    if json["e"] != nil{
+                        self.conError = Int(json["e"] as? String ?? "0")!
+                        group.leave()
+                        return
                     }
-                }catch {
                     
+                    if json["m"] != nil{ DataBase.member = Int(json["m"] as? String ?? "-1")! }
+                    
+                    DataBase.token = json["t"] as? String ?? ""
+                    
+                    results = json["r"] as? [[String:Any]] ?? [[:]]
+                    
+                }catch {
+                    group.leave()
+                    return
                 }
                 group.leave()
                 }.resume()
             
         }
         group.wait()
+        return results
     }
     
     func postTicket(extra: String) {
@@ -59,10 +85,8 @@ class DBConnection{
         
         let request = NSMutableURLRequest(url: urlCon)
         
-        
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(DataBase.token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
-        
         
         request.httpBody = extra.data(using: .utf8)
         
@@ -73,21 +97,14 @@ class DBConnection{
         switch conError {
             case 0: return "Error"
             
-            URLSession.shared.dataTask(with: request as URLRequest){ (data, response, error) in
-                guard let data = data else{return}
-                do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:Any]
-                    print("json:\(json)")
-                    self.token = json["t"] as? String ?? ""
-                    
-                    print("Token: \(self.token)")
-                    
-                    let results = json["r"] as? [[String:Any]] ?? nil
-                    
-                }catch {
-                    print("error")
-                }
-                }.resume()
+            case 402: return "Failed login"
+            
+            case 404: return "Not found"
+            
+            case 501:  return "Incorrect token"
+            
+            case 501: return "Token expired"
+            default: return ""
         }
     }
     

@@ -40,13 +40,19 @@ class Product: Hashable{
     
     func downloadImage(){
         let urlImage = "https://bakery-server-franor21.c9users.io/bakeryPhotos/\(id).jpg"
-        print(urlImage)
         guard let url = URL(string: urlImage) else{print("error en \(id)");return}
+        let group = DispatchGroup()
+        group.enter()
         let thread = DispatchQueue(label: "imageDownload", qos: .default, attributes: .concurrent)
         thread.async{
             guard let data = try? Data(contentsOf: url),
-                let img = UIImage(data: data) else{print("error2 en \(self.id)");return}
+                let img = UIImage(data: data) else{
+                    group.leave();
+                    return
+            }
             self.image = img
+            group.leave()
         }
+        group.wait()
     }
 }
