@@ -29,6 +29,16 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     var imgProducts: [UIImage] = []
+    var categorias: [String] = ["Pan","Croissant","Navidad","Bolleria","Otros"]
+    let imgCategorias: [UIImage] = [
+        UIImage(named: "bread")!,
+        UIImage(named: "croissant")!,
+        UIImage(named: "christmas")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "other")!,
+    ]
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +59,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         desVC.image = imgProducts[indexPath.row]
         desVC.name = DataBase.products[indexPath.item].name
         desVC.desc = DataBase.products[indexPath.item].description
-        desVC.price = DataBase.products[indexPath.item].price
-        desVC.id = DataBase.products[indexPath.item].id
-        
+        desVC.price = String(DataBase.products[indexPath.item].price)
         self.navigationController?.pushViewController(desVC, animated: true)
     }
     
@@ -73,7 +81,8 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         }else{
             textoLabel = productName[indexPath.item]
         }
-        cell.ivProduct.image = imgProducts[indexPath.item]
+        
+        cell.ivProduct.image = imgProducts[indexPath.item]        
         cell.lbProduct.text = textoLabel
         
         return cell

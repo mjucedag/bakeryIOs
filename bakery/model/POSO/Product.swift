@@ -9,10 +9,10 @@ class Product: Hashable{
         return (id+idFamily).hashValue
     }
     
-    var id: String
-    var idFamily: String
+    var id: Int
+    var idFamily: Int
     var name: String
-    var price: String
+    var price: Double
     var description: String
     var image:UIImage
     
@@ -27,7 +27,7 @@ class Product: Hashable{
         downloadImage()
     }
     
-    init(id: String, idFamily: String, name: String, price: String, description: String){
+    init(id: Int, idFamily: Int, name: String, price: Double, description: String){
         
         self.id = id
         self.idFamily = idFamily
