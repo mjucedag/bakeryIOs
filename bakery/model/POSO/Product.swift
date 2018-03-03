@@ -7,22 +7,22 @@ struct Product: Hashable{
         return (id+idFamily).hashValue
     }
     
-    var id: Int
-    var idFamily: Int
+    var id: String
+    var idFamily: String
     var name: String
-    var price: Double
+    var price: String
     var description: String
     
     init?(json:Any){
         guard let json = json as? [String:Any] else{return nil}
-        id = json["id"] as? Int ?? -1
-        idFamily = json["idfamily"] as? Int ?? -1
+        id = json["id"] as? String ?? "-1"
+        idFamily = json["idfamily"] as? String ?? "-1"
         name = json["product"] as? String ?? "noname"
-        price = json["price"] as? Double ?? -1
+        price = json["price"] as? String ?? "-1"
         description = json["description"] as? String ?? "No description for this product"
     }
     
-    init(id: Int, idFamily: Int, name: String, price: Double, description: String){
+    init(id: String, idFamily: String, name: String, price: String, description: String){
         
         self.id = id
         self.idFamily = idFamily
