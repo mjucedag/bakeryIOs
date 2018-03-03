@@ -21,14 +21,17 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     var desc = ""
     var price = ""
     var id = ""
+    var familia = 0
     var pickOption = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
+    
+    var categorias = ["Pan","Bolleria","Croissant","Navidad","Otros"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         imgImage.image = image
-        lbName.text! = name
+        lbName.text! = categorias[familia-1]
         lbDescription.text! = desc
         lbPrice.text! = price
         
