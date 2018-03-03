@@ -13,9 +13,13 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBOutlet weak var imgImage: UIImageView!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var tfPicker: UITextField!
+    @IBOutlet weak var lbDescription: UILabel!
+    @IBOutlet weak var lbPrice: UILabel!
     
     var image = UIImage()
     var name = ""
+    var desc = ""
+    var price = ""
     var pickOption = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
     
     override func viewDidLoad() {
@@ -24,6 +28,9 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         // Do any additional setup after loading the view.
         imgImage.image = image
         lbName.text! = name
+        lbDescription.text! = desc
+        lbPrice.text! = price
+        
         //hace el picker de cantidad
         let pickerView = UIPickerView()
         pickerView.delegate = self

@@ -95,6 +95,13 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     // MARK: Delegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         print("celda seleccionada \(DataBase.products[indexPath.item].name)")
+        let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let desVC = mainStoryboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        desVC.image = imgProducts[indexPath.row]
+        desVC.name = DataBase.products[indexPath.item].name
+        desVC.desc = DataBase.products[indexPath.item].description
+        desVC.price = DataBase.products[indexPath.item].price
+        self.navigationController?.pushViewController(desVC, animated: true)
     }
     
     // MARK: DataSource

@@ -171,7 +171,6 @@
                                         <connections>
                                             <outlet property="ivProduct" destination="P1e-Zi-185" id="WJS-7u-Uzn"/>
                                             <outlet property="lbProduct" destination="pAC-SH-aZ9" id="cJ3-4h-B9p"/>
-                                            <segue destination="lMK-up-37P" kind="show" id="F4H-oP-EFL"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -250,14 +249,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="IaC-iP-xwN">
-                                <rect key="frame" x="20" y="318" width="374" height="171"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cantidad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfd-FP-PFP">
                                 <rect key="frame" x="87" y="566" width="116" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -292,19 +283,28 @@
                                 <rect key="frame" x="68" y="55" width="278" height="213"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxb-vQ-goY">
+                                <rect key="frame" x="68" y="331" width="278" height="178"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="g1T-pm-Eov"/>
                     </view>
                     <connections>
                         <outlet property="imgImage" destination="MfC-P2-qvK" id="3NA-xS-bRU"/>
+                        <outlet property="lbDescription" destination="Xxb-vQ-goY" id="hSM-Tc-0Jf"/>
                         <outlet property="lbName" destination="e6y-qR-Ve6" id="q7F-yk-TA4"/>
+                        <outlet property="lbPrice" destination="fA6-xZ-T4H" id="6tA-u8-MiQ"/>
                         <outlet property="tfPicker" destination="yHE-Xk-XOg" id="gk8-BW-blt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sDW-cB-EtC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3251" y="201"/>
+            <point key="canvasLocation" x="3250.7246376811595" y="200.54347826086959"/>
         </scene>
         <!--Ticket-->
         <scene sceneID="vDK-J1-wrt">
