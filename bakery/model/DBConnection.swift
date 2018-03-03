@@ -1,76 +1,78 @@
-//
-//  DBConnection.swift
-//  bakery
-//
-//  Created by mjuceda on 27/2/18.
-//  Copyright © 2018 Maria Jose Uceda Garcia. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
 class DBConnection{
     
     private let dbURL = "https://bakery-server-franor21.c9users.io/";
+    public var conError = 200
     
-    func connect(){
-        
+    func connect()->Bool{
         let credentials = DataBase.getCredentials()
         let urlString = dbURL + "login"
-        guard let urlCon = URL(string: urlString) else {return}
+        guard let urlCon = URL(string: urlString) else {return false}
         let request = NSMutableURLRequest(url: urlCon)
         
         request.setValue("Basic \(credentials)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
-        
+        _ = query(request)
+        print(conError)
+        return conError == 200
     }
     
-    func getData(table: String, user: String, password: String,  products: inout [Product]) {
+    func getData(table: String) {
         var urlString = dbURL
         urlString += table
         guard let urlCon = URL(string: urlString) else {return}
         
         let request = NSMutableURLRequest(url: urlCon)
         
-        
-        let credentials = DataBase.getCredentials()
         request.setValue("Bearer \(DataBase.token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
         
-        DispatchQueue.main.async {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        }
-        let results = query(request: request )
+        let results = query(request)
         results.forEach{ row in
             DataBase.products.append( Product(json: row)!)
         }
     }
     
-    func query(request:NSMutableURLRequest) -> [[String:Any]]{
+    func query(_ request:NSMutableURLRequest) -> [[String:Any]]{
         let group = DispatchGroup()
         let colaGlobal = DispatchQueue.global()
         group.enter()
         var results:[[String:Any]] = [[:]]
+        
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        }
         colaGlobal.async {
             defer{
                 DispatchQueue.main.async{
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
             }
-            
             URLSession.shared.dataTask(with: request as URLRequest){ (data, response, error) in
                 guard let data = data else{return}
                 do{
                     let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:Any]
+                    if json["e"] != nil{
+                        self.conError = Int(json["e"] as? String ?? "0")!
+                        group.leave()
+                        return
+                    }
+                    
+                    if json["m"] != nil{ DataBase.member = Int(json["m"] as? String ?? "-1")! }
+                    
                     DataBase.token = json["t"] as? String ?? ""
                     
                     results = json["r"] as? [[String:Any]] ?? [[:]]
                     
                 }catch {
+                    group.leave()
                     return
                 }
                 group.leave()
                 }.resume()
+            
         }
         group.wait()
         return results
@@ -88,33 +90,22 @@ class DBConnection{
         
         request.httpBody = extra.data(using: .utf8)
         
-        DispatchQueue.main.async {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        }
-        
-        let colaGlobal = DispatchQueue.global()
-        colaGlobal.async {
-            defer{
-                DispatchQueue.main.async{
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                }
-            }
-            
-            URLSession.shared.dataTask(with: request as URLRequest){ (data, response, error) in
-                guard let data = data else{return}
-                do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:Any]
-                    print("json:\(json)")
-                    DataBase.token = json["t"] as? String ?? ""
-                    
-                    let results = json["r"] as? [[String:Any]] ?? nil
-                    print(results)
-                }catch {
-                    print("error")
-                }
-                }.resume()
-        }
+        _ = query(request)
     }
     
+    public func getError()->String{
+        switch conError {
+            case 0: return "Error"
+            
+            case 402: return "Failed login"
+            
+            case 404: return "Not found"
+            
+            case 501:  return "Incorrect token"
+            
+            case 501: return "Token expired"
+            default: return ""
+        }
+    }
     
 }

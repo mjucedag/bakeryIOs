@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  bakery
-//
-//  Created by Maria Jose Uceda Garcia on 28/01/2018.
-//  Copyright © 2018 Maria Jose Uceda Garcia. All rights reserved.
-//
-
 import UIKit
 
 class LoginViewController: UIViewController {
@@ -18,18 +10,16 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: UIButton) {
         error.isHidden = true
         error.text = ""
-        guard tfUser.text != "" && tfPassword.text != "" else{
-            
+        guard tfUser.text != "" && tfPassword.text != "" else {
             if tfUser.text == ""{
                 tfUser.layer.borderColor = UIColor.red.cgColor
                 tfUser.layer.borderWidth = 1.5
                 error.text! += "Fill your username \n"
             }
-            if tfPassword.text == ""{
+            if tfPassword.text == "" {
                 tfPassword.layer.borderColor = UIColor.red.cgColor
                 tfPassword.layer.borderWidth = 1.5
                 error.text! += "Fill your password"
-                
             }
             error.isHidden = false
             return
@@ -41,15 +31,26 @@ class LoginViewController: UIViewController {
         tfPassword.layer.borderWidth = 1.0
 
         //hacer la conexion
+        if !connect() {return}
+        
+        print(DataBase.member)
+        
+        performSegue(withIdentifier: "loginSegue", sender: self)
+    }
+    
+    func connect() ->Bool{
         let con = DBConnection()
         let user = tfUser.text!
         let password = tfPassword.text!
         DataBase.setCredentials(user: user, pass: password)
-        con.getData(table: "product", user: user, password: password, products: &DataBase.products)
+        
+        let connected = con.connect()
+        if !connected {showError(msg: con.getError()); return false}
+        
+        con.getData(table: "product")
         
         print("productos = \(DataBase.products.count)")
-        
-        performSegue(withIdentifier: "loginSegue", sender: self)
+        return true
     }
     
     override func viewDidLoad() {
@@ -61,6 +62,11 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func showError(msg:String){
+        error.isHidden = false
+        error.text = msg
     }
 
 
