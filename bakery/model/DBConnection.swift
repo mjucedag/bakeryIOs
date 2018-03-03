@@ -1,11 +1,3 @@
-//
-//  DBConnection.swift
-//  bakery
-//
-//  Created by mjuceda on 27/2/18.
-//  Copyright © 2018 Maria Jose Uceda Garcia. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -15,7 +7,7 @@ class DBConnection{
     private var token:String = ""
     
     
-    func getData(table: String, user: String, password: String,  products: inout [Product]) {
+    func getData(table: String) {
         var urlString = dbURL
         urlString += table
         guard let urlCon = URL(string: urlString) else {return}
@@ -40,7 +32,6 @@ class DBConnection{
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
             }
-            
             URLSession.shared.dataTask(with: request as URLRequest){ (data, response, error) in
                 guard let data = data else{return}
                 do{
@@ -56,6 +47,7 @@ class DBConnection{
                 }
                 group.leave()
                 }.resume()
+            
         }
         group.wait()
     }
@@ -74,17 +66,12 @@ class DBConnection{
         
         request.httpBody = extra.data(using: .utf8)
         
-        DispatchQueue.main.async {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        }
-        
-        let colaGlobal = DispatchQueue.global()
-        colaGlobal.async {
-            defer{
-                DispatchQueue.main.async{
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                }
-            }
+        _ = query(request)
+    }
+    
+    public func getError()->String{
+        switch conError {
+            case 0: return "Error"
             
             URLSession.shared.dataTask(with: request as URLRequest){ (data, response, error) in
                 guard let data = data else{return}
@@ -103,6 +90,5 @@ class DBConnection{
                 }.resume()
         }
     }
-    
     
 }
