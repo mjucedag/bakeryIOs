@@ -101,6 +101,8 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         desVC.name = DataBase.products[indexPath.item].name
         desVC.desc = DataBase.products[indexPath.item].description
         desVC.price = DataBase.products[indexPath.item].price
+        desVC.id = DataBase.products[indexPath.item].id
+        
         self.navigationController?.pushViewController(desVC, animated: true)
     }
     

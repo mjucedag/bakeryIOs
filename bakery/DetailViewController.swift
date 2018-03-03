@@ -20,13 +20,14 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     var name = ""
     var desc = ""
     var price = ""
+    var id = ""
     var pickOption = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        imgImage.image = image
+       // imgImage.image = image
         lbName.text! = name
         lbDescription.text! = desc
         lbPrice.text! = price
@@ -35,8 +36,45 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         let pickerView = UIPickerView()
         pickerView.delegate = self
         tfPicker.inputView = pickerView
+        
+        //load image
+        let url = URL(string: "https://bakery-server-franor21.c9users.io/bakeryPhoto.php")
+        URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
+            guard let data = data, error == nil else { return }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+                let urlImage = json[self.id]
+                print(urlImage!)
+                
+                var strintURL = String(describing: urlImage)
+                let url = URL(string: strintURL)
+                
+                self.downloadImage(url: url!)
+                
+            } catch let error as NSError {
+                print(error)
+            }
+        }).resume()
+        
     }
     
+    func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            completion(data, response, error)
+            }.resume()
+    }
+    func downloadImage(url: URL) {
+        print("Download Started")
+        getDataFromUrl(url: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            DispatchQueue.main.async() {
+                self.imgImage.image = UIImage(data: data)
+            }
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
