@@ -58,6 +58,7 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     //actualiza el campo de texto cuando se selecciona la fila
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         tfPicker.text = pickOption[row]
+        tfPicker.endEditing(true)
     }
     
     
