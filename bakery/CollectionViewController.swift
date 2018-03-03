@@ -23,6 +23,15 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
     
+    var categorias: [String] = ["Pan","Croissant","Navidad","Bolleria","Otros"]
+    let imgCategorias: [UIImage] = [
+        UIImage(named: "bread")!,
+        UIImage(named: "croissant")!,
+        UIImage(named: "christmas")!,
+        UIImage(named: "pastries")!,
+        UIImage(named: "other")!,
+    ]
+    
     let imgProducts: [UIImage] = [
         
         UIImage(named: "pastries")!,
@@ -71,6 +80,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         UIImage(named: "pastries")!,
         UIImage(named: "pastries")!,
         UIImage(named: "pastries")!,
+        
         ]
     
     override func viewDidLoad() {
@@ -80,12 +90,11 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         //        searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
         getNombreProduct()
-        
     }
     
     // MARK: Delegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-        
+        print("celda seleccionada \(DataBase.products[indexPath.item].name)")
     }
     
     // MARK: DataSource
@@ -95,11 +104,10 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         }
         return DataBase.products.count
     }
-    
-    
+
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! CollectionViewCell
-        
+
         let textoLabel : String!
         
         if buscando {
@@ -108,10 +116,25 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             textoLabel = productName[indexPath.item]
         }
         
-        cell.ivProduct.image = imgProducts[indexPath.item]
+        cell.ivProduct.image = imgProducts[indexPath.item]        
         cell.lbProduct.text = textoLabel
         
         return cell
+    }
+    
+    // Section
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+        //Pinta 4 veces todos los elementos
+        return categorias.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionView", for: indexPath) as! SectionView
+        header.imCategoria.image = imgCategorias[indexPath.section]
+        header.lbCategoria.text = categorias[indexPath.section]
+        
+        return header
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -125,5 +148,4 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             collectionView.reloadData()
         }
     }
-    
 }

@@ -47,8 +47,6 @@ class LoginViewController: UIViewController {
         
         con.getData(table: "product", user: user, password: password, products: &DataBase.products)
         
-        print("productos = \(DataBase.products.count)")
-        
         performSegue(withIdentifier: "loginSegue", sender: self)
     }
     
