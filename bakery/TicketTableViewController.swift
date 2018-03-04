@@ -9,6 +9,7 @@
 import UIKit
 
 class TicketTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var tableView: UITableView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DataBase.products.count
@@ -18,6 +19,8 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
         let p = DataBase.products[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell") as! TicketTableViewCell
         cell.imageProduct.image = p.image
+        cell.titleLabel.text = p.name
+        cell.priceLabel.text = String(p.price)
         return cell
     }
     

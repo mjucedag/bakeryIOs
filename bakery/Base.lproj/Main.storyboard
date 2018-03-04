@@ -409,7 +409,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NZy-yb-CH4">
                                                             <rect key="frame" x="90" y="5" width="299" height="80"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHo-2a-yx3">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHo-2a-yx3" userLabel="Product Title Label">
                                                                     <rect key="frame" x="0.0" y="0.0" width="299" height="15"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -438,26 +438,18 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IFf-lF-F1v" userLabel="rowQuantity">
                                                                     <rect key="frame" x="0.0" y="35" width="299" height="20"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cantidad:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PzV-kQ-gFn">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Cantidad:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PzV-kQ-gFn">
                                                                             <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="20"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hqy-9n-zJu">
-                                                                            <rect key="frame" x="73.666666666666657" y="0.0" width="46" height="20"/>
-                                                                            <state key="normal" title="Button"/>
-                                                                        </button>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvp-YR-7pS">
-                                                                            <rect key="frame" x="119.66666666666666" y="0.0" width="10.333333333333343" height="20"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvp-YR-7pS">
+                                                                            <rect key="frame" x="73.666666666666643" y="0.0" width="225.33333333333337" height="20"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wT-LE-rq4">
-                                                                            <rect key="frame" x="130" y="0.0" width="169" height="20"/>
-                                                                            <state key="normal" title="Button"/>
-                                                                        </button>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="uM8-ud-ImI"/>
@@ -524,7 +516,11 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.82919770077720201" green="0.82919770077720201" blue="0.82919770077720201" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <outlet property="imageProduct" destination="mEK-R2-b8V" id="eq0-KI-6Dr"/>
+                                            <outlet property="imageProduct" destination="mEK-R2-b8V" id="S9c-hz-k56"/>
+                                            <outlet property="priceLabel" destination="Tds-pv-1Se" id="0o2-Eh-E80"/>
+                                            <outlet property="quantityLabel" destination="Pvp-YR-7pS" id="OsB-JB-DTn"/>
+                                            <outlet property="titleLabel" destination="uHo-2a-yx3" id="TyN-jW-aVb"/>
+                                            <outlet property="totalLabel" destination="74w-vV-B9u" id="lU6-j8-Ycm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -543,9 +539,6 @@
                         <viewLayoutGuide key="safeArea" id="hfF-G5-9ql"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Ticket" image="list" id="yHe-Ku-5cD"/>
-                    <connections>
-                        <outlet property="tableView" destination="jAi-Ot-lF0" id="VSp-FK-qSg"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cma-C4-LVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
