@@ -20,7 +20,7 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell") as! TicketTableViewCell
         cell.imageProduct.image = p.image
         cell.titleLabel.text = p.name
-        cell.priceLabel.text = String(p.price)
+        cell.priceLabel.text = String(p.price) + String("€")
         return cell
     }
     
