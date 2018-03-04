@@ -12,16 +12,16 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var totalCartLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    var productsKeys = Array<Product>()
     
+    var productsKeys = Array<Product>()
+     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+               
         tableView.delegate = self
         tableView.dataSource = self
         
         productsKeys = Array(DataBase.cart.products.keys)
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,7 +30,7 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let p = productsKeys[indexPath.row]
+        let p = DataBase.products[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell") as! TicketTableViewCell
         cell.setProduct(p)
@@ -118,5 +118,18 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //alerta para confirmar el borrado del ticket
+   /* @IBAction func confirmDeleteTicket(_ sender: UIButton) {
+        let actionSheet = UIAlertController(title:"¿Estás seguro/a de borrar el ticket?", message: "No podrás recuperarlo una vez borrado", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let deleteAction = UIAlertAction(title:"Borrar ticket", style:UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in print("Deleted pressed")}
+        let cancelAction = UIAlertAction(title:"Cancelar borrado", style:UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in print("Cancel pressed")}
+            
+        actionSheet.addAction(deleteAction)
+        actionSheet.addAction(cancelAction)
+        
+        self.present(actionSheet, animated: true, completion: nil)
+ }*/
+    
 
 }

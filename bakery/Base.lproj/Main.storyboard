@@ -233,7 +233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZc-oP-fdA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2403" y="130"/>
+            <point key="canvasLocation" x="2252" y="107"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="ICa-9g-gxf">
@@ -353,12 +353,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sDW-cB-EtC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3104" y="130"/>
+            <point key="canvasLocation" x="3029" y="107"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8bO-yF-AkJ">
+            <objects>
+                <viewController id="dPO-fn-hry" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LGQ-fR-mLc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wpu-5w-l3o"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H47-G8-pnv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3103" y="907"/>
         </scene>
         <!--Ticket-->
         <scene sceneID="vDK-J1-wrt">
             <objects>
-                <viewController id="s4g-qn-5lv" customClass="TicketTableViewController" customModule="bakery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TicketTableViewController" id="s4g-qn-5lv" customClass="TicketTableViewController" customModule="bakery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QK9-DB-dc4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -543,13 +558,66 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Ticket" image="list" id="yHe-Ku-5cD"/>
                     <connections>
-                        <outlet property="tableView" destination="jAi-Ot-lF0" id="BAn-xf-F2w"/>
-                        <outlet property="totalCartLabel" destination="7OA-12-J0G" id="Tdj-W7-mCL"/>
+                        <outlet property="cancelTicket" destination="Uwp-Gf-vEx" id="hYz-bQ-TWn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cma-C4-LVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660.8695652173915" y="906.52173913043487"/>
+            <point key="canvasLocation" x="1365" y="942"/>
+        </scene>
+        <!--By Family View Controller-->
+        <scene sceneID="MCe-Gm-qS8">
+            <objects>
+                <viewController storyboardIdentifier="ByFamilyViewController" id="ckY-zb-DEX" customClass="ByFamilyViewController" customModule="bakery" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l5F-4K-Hub">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gH8-hr-NQB">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NMY-et-NBF">
+                                    <size key="itemSize" width="200" height="200"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryCell" id="gAw-vM-b3d" customClass="CategoryCollectionViewCell" customModule="bakery" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aj8-6s-ZnT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="ivCategory" destination="aj8-6s-ZnT" id="y0Q-21-b90"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="ckY-zb-DEX" id="QeX-lO-enG"/>
+                                    <outlet property="delegate" destination="ckY-zb-DEX" id="RIy-BK-YNi"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="k6L-OH-cIW"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="gH8-hr-NQB" id="x1y-ep-fgK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eng-Gg-uo5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2280" y="-1448"/>
         </scene>
         <!--Segment View Controller-->
         <scene sceneID="z2Z-Oz-Jcf">
@@ -652,7 +720,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Em-Oj-iKh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2402.898550724638" y="-567.39130434782612"/>
+            <point key="canvasLocation" x="2313" y="-708"/>
         </scene>
         <!--Date Popup View Controller-->
         <scene sceneID="4sU-Uo-scT">
@@ -705,7 +773,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fr-kq-3DK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3271" y="-567"/>
+            <point key="canvasLocation" x="3067" y="-708"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6zU-bW-SEe">
@@ -724,7 +792,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaO-Ki-Uac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="899" y="132"/>
+            <point key="canvasLocation" x="797" y="133"/>
         </scene>
         <!--Ventas-->
         <scene sceneID="iMR-BJ-cjx">
@@ -743,7 +811,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="upr-7t-m50" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1661" y="131"/>
+            <point key="canvasLocation" x="1577" y="131"/>
         </scene>
         <!--Consulta Venta-->
         <scene sceneID="EYC-9c-xgh">
@@ -762,7 +830,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QBg-Js-Ngd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660.8695652173915" y="-567.39130434782612"/>
+            <point key="canvasLocation" x="1439" y="-724"/>
         </scene>
     </scenes>
     <resources>

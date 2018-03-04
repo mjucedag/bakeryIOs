@@ -137,6 +137,8 @@
 				A175505D204AB30B00130E0E /* SectionView.swift */,
 				2D8C2F72204C4346000047C1 /* DatePopupViewController.swift */,
 				2D1C1D09204C7E91002BA8A6 /* SegmentViewController.swift */,
+				A17022ED204CA5A300E2653F /* ByFamilyViewController.swift */,
+				A17022F1204CAEEB00E2653F /* CategoryCollectionViewCell.swift */,
 			);
 			path = bakery;
 			sourceTree = "<group>";
@@ -319,11 +321,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A17022F2204CAEEB00E2653F /* CategoryCollectionViewCell.swift in Sources */,
 				2D1C1D0A204C7E91002BA8A6 /* SegmentViewController.swift in Sources */,
 				A19D2BB620471A7C00CACBC4 /* CollectionViewController.swift in Sources */,
 				A19D2BB42047174400CACBC4 /* CollectionViewCell.swift in Sources */,
 				4935C054204CAF8F00CA7B4C /* TicketTableViewController.swift in Sources */,
 				A175505E204AB30B00130E0E /* SectionView.swift in Sources */,
+				A17022EE204CA5A300E2653F /* ByFamilyViewController.swift in Sources */,
 				2D482F25201E0AF800967FCA /* LoginViewController.swift in Sources */,
 				C50B1AA42045CD5A00316F9B /* Product.swift in Sources */,
 				33240380204836E700818DB5 /* Ticket.swift in Sources */,
