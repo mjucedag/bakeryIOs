@@ -10,10 +10,7 @@ import UIKit
 
 class DataBase {
     public static var products:[Product] = []
-    public static var cart:Ticket? = nil
-    //Diccionario | clave: id producto / valor: cantidad
-    //Se setean valores en @DetailViewController
-    public static var dPreviousTicket = [String: String]()
+    public static var cart:Ticket = Ticket()
     
     static var member = 0
     static var user = ""
