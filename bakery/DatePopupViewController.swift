@@ -23,7 +23,14 @@ class DatePopupViewController: UIViewController {
     
     @IBAction func saveDate_TouchUpInside(_ sender: UIButton) {
         
-        dismiss(animated: true)
+        datePicker.datePickerMode = UIDatePickerMode.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        let selectedDate = dateFormatter.string(from: datePicker.date)
+    
+        SegmentViewController.selectedDate = selectedDate
+        navigationController?.popToRootViewController(animated: true)
+        // dismiss(animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -13,10 +13,20 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var mySegmentegControl: UISegmentedControl!
     @IBOutlet weak var myTableView: UITableView!
     
-    let dailyList:[String] = ["Private 1", "Private 2"] //tuplas de la consulta de tickets por dia
+    var dailyList:[String] = ["Private 1", "Private 2"] //tuplas de la consulta de tickets por dia
     let memberTicketsList:[String] = ["Priv 1", "Priv 2"] //tuplas de la consulta de tickets por empleado
     let familyTicketsList:[String] = ["aaaa 1", "aaa 2"] //tuplas de la consulta de tickets por familia
     
+    public static var selectedDate = ""
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated) // No need for semicolon
+        if(!SegmentViewController.selectedDate.isEmpty){
+            dailyList = ["Private changed 1", "Private changed 2"]
+            myTableView.reloadData()
+        }
+        print(SegmentViewController.selectedDate)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
