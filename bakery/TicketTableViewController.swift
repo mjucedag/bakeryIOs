@@ -53,6 +53,12 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
         totalCartLabel.text = String(format: "Total: %.2f€", DataBase.cart.total)
         tableView.reloadData()
     }
+    @IBAction func tramitar(_ sender: Any) {
+        let con = DBConnection()
+        con.postTicket(extra: DataBase.cart.toJson())
+        DataBase.cart = Ticket()
+        refresh()
+    }
     
     // MARK: - Table view data source
 

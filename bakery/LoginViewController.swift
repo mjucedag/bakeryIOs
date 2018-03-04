@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var error: UILabel!
     let group = DispatchGroup()
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     @IBAction func login(_ sender: UIButton) {
         error.isHidden = true
@@ -39,9 +40,8 @@ class LoginViewController: UIViewController {
         tfPassword.layer.borderWidth = 1.0
 
         //hacer la conexion
+        activityIndicator.startAnimating()
         if !connect() {return}
-        
-        
         
         DataBase.cart = Ticket()
         
@@ -54,19 +54,26 @@ class LoginViewController: UIViewController {
         let password = tfPassword.text!
         DataBase.setCredentials(user: user, pass: password)
         
+        
+        
         let connected = con.connect()
         if !connected {showError(msg: con.getError()); return false}
         
         con.getProducts()
         
         print("productos = \(DataBase.products.count)")
+        
+        
         return true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(activityIndicator)
     }
 
     override func didReceiveMemoryWarning() {

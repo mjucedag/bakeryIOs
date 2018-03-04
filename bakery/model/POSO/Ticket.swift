@@ -1,5 +1,14 @@
+import Foundation
+
 struct Ticket{
-    var date : String = ""
+    var date : String {
+        get{
+            let date = Date()
+            let dateFormat = DateFormatter()
+            dateFormat.dateFormat = "yyyy/MM/dd"
+            return dateFormat.string(from: date)
+        }
+    }
     var member : Int
     var products: [Product:Int]
     var total:Double {

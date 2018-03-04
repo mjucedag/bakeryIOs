@@ -53,6 +53,22 @@ class DBConnection{
         return tickets
     }
     
+    func postTicket(extra: String) {
+        var urlString = dbURL
+        urlString += "ticket"
+        guard let urlCon = URL(string: urlString) else {return}
+        
+        let request = NSMutableURLRequest(url: urlCon)
+        
+        request.setValue("Bearer \(DataBase.token)", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        
+        request.httpBody = extra.data(using: .utf8)
+        
+        _ = query(request)
+    }
+    
+    
     func query(_ request:NSMutableURLRequest) -> [[String:Any]]{
         let group = DispatchGroup()
         let colaGlobal = DispatchQueue.global()
@@ -96,20 +112,7 @@ class DBConnection{
         return results
     }
     
-    func postTicket(extra: String) {
-        var urlString = dbURL
-        urlString += "ticket"
-        guard let urlCon = URL(string: urlString) else {return}
-        
-        let request = NSMutableURLRequest(url: urlCon)
-        
-        request.setValue("Bearer \(DataBase.token)", forHTTPHeaderField: "Authorization")
-        request.httpMethod = "POST"
-        
-        request.httpBody = extra.data(using: .utf8)
-        
-        _ = query(request)
-    }
+    
     
     public func getError()->String{
         switch conError {
