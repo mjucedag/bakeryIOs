@@ -14,13 +14,12 @@
 		2D482F2D201E0AF800967FCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D482F2B201E0AF800967FCA /* LaunchScreen.storyboard */; };
 		2D482F38201E0AF800967FCA /* bakeryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482F37201E0AF800967FCA /* bakeryTests.swift */; };
 		2D482F43201E0AF800967FCA /* bakeryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482F42201E0AF800967FCA /* bakeryUITests.swift */; };
-		2D8C2F71204B86B5000047C1 /* madera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D8C2F70204B86B5000047C1 /* madera.png */; };
 		2D8C2F73204C4346000047C1 /* DatePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C2F72204C4346000047C1 /* DatePopupViewController.swift */; };
 		2D972A14204B1A1B004E8B14 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D972A13204B1A1B004E8B14 /* DetailViewController.swift */; };
 		33240380204836E700818DB5 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324037F204836E700818DB5 /* Ticket.swift */; };
 		333F572E2048137B00830AAF /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F572D2048137B00830AAF /* DataBase.swift */; };
-		49FEEB1D204C55BC000AA14B /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEEB1C204C55BC000AA14B /* TicketTableViewController.swift */; };
-		49FEEB1F204C59D7000AA14B /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEEB1E204C59D7000AA14B /* TicketTableViewCell.swift */; };
+		4935C050204C769900CA7B4C /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935C04F204C769900CA7B4C /* TicketTableViewCell.swift */; };
+		4935C052204C76A900CA7B4C /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935C051204C76A800CA7B4C /* TicketTableViewController.swift */; };
 		A175505E204AB30B00130E0E /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A175505D204AB30B00130E0E /* SectionView.swift */; };
 		A19D2BB42047174400CACBC4 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19D2BB32047174400CACBC4 /* CollectionViewCell.swift */; };
 		A19D2BB620471A7C00CACBC4 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19D2BB520471A7C00CACBC4 /* CollectionViewController.swift */; };
@@ -59,13 +58,12 @@
 		2D482F3E201E0AF800967FCA /* bakeryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bakeryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D482F42201E0AF800967FCA /* bakeryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bakeryUITests.swift; sourceTree = "<group>"; };
 		2D482F44201E0AF800967FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2D8C2F70204B86B5000047C1 /* madera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = madera.png; path = ../../../Downloads/madera.png; sourceTree = "<group>"; };
 		2D8C2F72204C4346000047C1 /* DatePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePopupViewController.swift; sourceTree = "<group>"; };
 		2D972A13204B1A1B004E8B14 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3324037F204836E700818DB5 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		333F572D2048137B00830AAF /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
-		49FEEB1C204C55BC000AA14B /* TicketTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
-		49FEEB1E204C59D7000AA14B /* TicketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
+		4935C04F204C769900CA7B4C /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
+		4935C051204C76A800CA7B4C /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
 		A175505D204AB30B00130E0E /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		A19D2BB32047174400CACBC4 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		A19D2BB520471A7C00CACBC4 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +103,7 @@
 				2D482F36201E0AF800967FCA /* bakeryTests */,
 				2D482F41201E0AF800967FCA /* bakeryUITests */,
 				2D482F20201E0AF800967FCA /* Products */,
+				49FEEB20204C6D74000AA14B /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +120,8 @@
 		2D482F21201E0AF800967FCA /* bakery */ = {
 			isa = PBXGroup;
 			children = (
+				4935C051204C76A800CA7B4C /* TicketTableViewController.swift */,
+				4935C04F204C769900CA7B4C /* TicketTableViewCell.swift */,
 				C50B1AA12045CD2300316F9B /* model */,
 				2D482F22201E0AF800967FCA /* AppDelegate.swift */,
 				2D482F24201E0AF800967FCA /* LoginViewController.swift */,
@@ -153,6 +154,13 @@
 				2D482F44201E0AF800967FCA /* Info.plist */,
 			);
 			path = bakeryUITests;
+			sourceTree = "<group>";
+		};
+		49FEEB20204C6D74000AA14B /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		C50B1AA12045CD2300316F9B /* model */ = {
@@ -311,14 +319,14 @@
 				A19D2BB620471A7C00CACBC4 /* CollectionViewController.swift in Sources */,
 				A19D2BB42047174400CACBC4 /* CollectionViewCell.swift in Sources */,
 				A175505E204AB30B00130E0E /* SectionView.swift in Sources */,
-				49FEEB1F204C59D7000AA14B /* TicketTableViewCell.swift in Sources */,
 				2D482F25201E0AF800967FCA /* LoginViewController.swift in Sources */,
 				C50B1AA42045CD5A00316F9B /* Product.swift in Sources */,
 				33240380204836E700818DB5 /* Ticket.swift in Sources */,
+				4935C050204C769900CA7B4C /* TicketTableViewCell.swift in Sources */,
 				2D8C2F73204C4346000047C1 /* DatePopupViewController.swift in Sources */,
 				2D482F23201E0AF800967FCA /* AppDelegate.swift in Sources */,
 				2D972A14204B1A1B004E8B14 /* DetailViewController.swift in Sources */,
-				49FEEB1D204C55BC000AA14B /* TicketTableViewController.swift in Sources */,
+				4935C052204C76A900CA7B4C /* TicketTableViewController.swift in Sources */,
 				333F572E2048137B00830AAF /* DataBase.swift in Sources */,
 				C50B1AA62045CD9A00316F9B /* DBConnection.swift in Sources */,
 			);
