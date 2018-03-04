@@ -78,17 +78,22 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     func setDicctionaryOfPreviousTicket(){
         //Si existe ya almacenado ese ID Producto en nuestro Diccionario
         //Tan solo tengo que sumar la cantidad guardada, con la nueva cantidad seleccionada
-        if let countExists = DataBase.dPreviousTicket[self.id] {
-            let countExistsInNumber = Int(countExists)
-            let newCountInNumber = Int(tfPicker.text!)
-            let sumCount = countExistsInNumber! + newCountInNumber!
-            
-            DataBase.dPreviousTicket[self.id] = String(sumCount);
-        }else{//Sino existe el producto como guardado, tan solo crear el nuevo Id Producto en el diccionario
-            DataBase.dPreviousTicket[self.id] = tfPicker.text;
+        var product: Product? = nil
+        for p in DataBase.products {
+            if(p.id == Int(self.id)){
+                product = p
+            }
         }
         
-        print("Id: " + self.id + " Cantidad: " + DataBase.dPreviousTicket[self.id]!)
+        if let countExists = DataBase.cart.products[product!]{
+            let countExistsInNumber = Int(countExists)
+            let newCountInNumber = Int(tfPicker.text!)
+            let sumCount = countExistsInNumber + newCountInNumber!
+            
+            DataBase.cart.products[product!] = sumCount;
+        }else{//Sino existe el producto como guardado, tan solo crear el nuevo Id Producto en el diccionario
+            DataBase.cart.products[product!] = Int(tfPicker.text!);
+        }
     }
     
     
