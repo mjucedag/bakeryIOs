@@ -8,35 +8,52 @@
 
 import UIKit
 
-class TicketTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TicketTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
+    @IBOutlet weak var totalCartLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataBase.products.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let p = DataBase.products[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell") as! TicketTableViewCell
-        cell.imageProduct.image = p.image
-        cell.titleLabel.text = p.name
-        cell.priceLabel.text = String(p.price) + String("€")
-        return cell
-    }
-    
+    var productsKeys = Array<Product>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
+        
+        productsKeys = Array(DataBase.cart.products.keys)
+        
     }
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return DataBase.cart.products.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let p = productsKeys[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell") as! TicketTableViewCell
+        cell.setProduct(p)
+        return cell
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        refresh()
+    }
+    
+    @objc func refresh(){
+        productsKeys = Array(DataBase.cart.products.keys)
+        
+        totalCartLabel.text = String(format: "Total: %.2f€", DataBase.cart.total)
+        tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     

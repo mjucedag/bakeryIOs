@@ -541,6 +541,7 @@
                     <tabBarItem key="tabBarItem" title="Ticket" image="list" id="yHe-Ku-5cD"/>
                     <connections>
                         <outlet property="tableView" destination="jAi-Ot-lF0" id="BAn-xf-F2w"/>
+                        <outlet property="totalCartLabel" destination="7OA-12-J0G" id="Tdj-W7-mCL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cma-C4-LVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
