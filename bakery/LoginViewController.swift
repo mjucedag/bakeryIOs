@@ -40,7 +40,11 @@ class LoginViewController: UIViewController {
 
         //hacer la conexion
         if !connect() {return}
+        
+        
+        
         DataBase.cart = Ticket()
+        
         performSegue(withIdentifier: "loginSegue", sender: self)
     }
     
@@ -53,7 +57,7 @@ class LoginViewController: UIViewController {
         let connected = con.connect()
         if !connected {showError(msg: con.getError()); return false}
         
-        con.getData(table: "product")
+        con.getProducts()
         
         print("productos = \(DataBase.products.count)")
         return true

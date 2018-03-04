@@ -2,7 +2,15 @@ struct Ticket{
     var date : String = ""
     var member : Int
     var products: [Product:Int]
-    
+    var total:Double {
+        get{
+            var out:Double = 0.00
+            products.forEach{p in
+                out += Double(p.value) * p.key.price
+            }
+            return out
+        }
+    }
     init(){
         self.member = DataBase.member
         self.products = [Product:Int]()
