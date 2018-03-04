@@ -13,13 +13,24 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var totalCartLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    var productsKeys = Array<Product>()
+     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+               
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        productsKeys = Array(DataBase.cart.products.keys)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DataBase.cart.products.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let p = productsKeys[indexPath.row]
+        let p = DataBase.products[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell") as! TicketTableViewCell
         cell.setProduct(p)
