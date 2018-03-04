@@ -26,5 +26,13 @@ class TicketTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    public func setProduct(_ p:Product){
+        let quantity = DataBase.cart.products[p]
+        imageProduct.image = p.image
+        titleLabel.text = p.name
+        quantityLabel.text = String(describing: quantity!)
+        priceLabel.text = String(format: "%.2f€", p.price)
+        totalLabel.text = String(format: "%.2f€", p.price*Double(quantity!))
+    }
 }

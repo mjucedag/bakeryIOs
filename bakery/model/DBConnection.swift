@@ -19,20 +19,38 @@ class DBConnection{
         return conError == 200
     }
     
-    func getData(table: String) {
+    func getData(table: String) -> [[String:Any]] {
         var urlString = dbURL
         urlString += table
-        guard let urlCon = URL(string: urlString) else {return}
+        guard let urlCon = URL(string: urlString) else {return [[:]]}
         
         let request = NSMutableURLRequest(url: urlCon)
         
         request.setValue("Bearer \(DataBase.token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
         
-        let results = query(request)
+        return query(request)
+    }
+    
+    func getProducts(){
+        let results = getData(table:"product")
         results.forEach{ row in
             DataBase.products.append( Product(json: row)!)
         }
+    }
+    
+    func getTickets(date:String) ->[[String:Any]]{
+        var tickets = getData(table:"ticket?date=\(date)")
+        tickets.enumerated().forEach{ k,t in
+            let idTicket = t["id"]
+            let details = getData(table:"ticketdetail?idticket=\(idTicket!)")
+            var total:Double = 0
+            details.forEach{d in
+                total += Double(d["price"] as? String ?? "0.00")!
+            }
+            tickets[k]["total"] = total
+        }
+        return tickets
     }
     
     func query(_ request:NSMutableURLRequest) -> [[String:Any]]{
