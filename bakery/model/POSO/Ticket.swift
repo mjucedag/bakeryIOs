@@ -3,7 +3,7 @@ struct Ticket{
     var member : Int
     var products: [Product:Int]
     
-    init(member: Int){
+    init(){
         self.member = DataBase.member
         self.products = [Product:Int]()
     }

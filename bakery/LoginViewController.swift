@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
 
         //hacer la conexion
         if !connect() {return}
-        
+        DataBase.cart = Ticket()
         performSegue(withIdentifier: "loginSegue", sender: self)
     }
     
