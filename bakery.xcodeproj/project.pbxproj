@@ -19,6 +19,8 @@
 		2D972A14204B1A1B004E8B14 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D972A13204B1A1B004E8B14 /* DetailViewController.swift */; };
 		33240380204836E700818DB5 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324037F204836E700818DB5 /* Ticket.swift */; };
 		333F572E2048137B00830AAF /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F572D2048137B00830AAF /* DataBase.swift */; };
+		49FEEB1D204C55BC000AA14B /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEEB1C204C55BC000AA14B /* TicketTableViewController.swift */; };
+		49FEEB1F204C59D7000AA14B /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEEB1E204C59D7000AA14B /* TicketTableViewCell.swift */; };
 		A175505E204AB30B00130E0E /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A175505D204AB30B00130E0E /* SectionView.swift */; };
 		A19D2BB42047174400CACBC4 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19D2BB32047174400CACBC4 /* CollectionViewCell.swift */; };
 		A19D2BB620471A7C00CACBC4 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19D2BB520471A7C00CACBC4 /* CollectionViewController.swift */; };
@@ -62,6 +64,8 @@
 		2D972A13204B1A1B004E8B14 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3324037F204836E700818DB5 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		333F572D2048137B00830AAF /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
+		49FEEB1C204C55BC000AA14B /* TicketTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
+		49FEEB1E204C59D7000AA14B /* TicketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		A175505D204AB30B00130E0E /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		A19D2BB32047174400CACBC4 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		A19D2BB520471A7C00CACBC4 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -123,7 +127,6 @@
 				2D482F26201E0AF800967FCA /* Main.storyboard */,
 				2D972A13204B1A1B004E8B14 /* DetailViewController.swift */,
 				2D482F29201E0AF800967FCA /* Assets.xcassets */,
-				2D8C2F70204B86B5000047C1 /* madera.png */,
 				2D482F2B201E0AF800967FCA /* LaunchScreen.storyboard */,
 				2D482F2E201E0AF800967FCA /* Info.plist */,
 				A19D2BB32047174400CACBC4 /* CollectionViewCell.swift */,
@@ -281,7 +284,6 @@
 				2D482F2D201E0AF800967FCA /* LaunchScreen.storyboard in Resources */,
 				2D482F2A201E0AF800967FCA /* Assets.xcassets in Resources */,
 				2D482F28201E0AF800967FCA /* Main.storyboard in Resources */,
-				2D8C2F71204B86B5000047C1 /* madera.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,12 +311,14 @@
 				A19D2BB620471A7C00CACBC4 /* CollectionViewController.swift in Sources */,
 				A19D2BB42047174400CACBC4 /* CollectionViewCell.swift in Sources */,
 				A175505E204AB30B00130E0E /* SectionView.swift in Sources */,
+				49FEEB1F204C59D7000AA14B /* TicketTableViewCell.swift in Sources */,
 				2D482F25201E0AF800967FCA /* LoginViewController.swift in Sources */,
 				C50B1AA42045CD5A00316F9B /* Product.swift in Sources */,
 				33240380204836E700818DB5 /* Ticket.swift in Sources */,
 				2D8C2F73204C4346000047C1 /* DatePopupViewController.swift in Sources */,
 				2D482F23201E0AF800967FCA /* AppDelegate.swift in Sources */,
 				2D972A14204B1A1B004E8B14 /* DetailViewController.swift in Sources */,
+				49FEEB1D204C55BC000AA14B /* TicketTableViewController.swift in Sources */,
 				333F572E2048137B00830AAF /* DataBase.swift in Sources */,
 				C50B1AA62045CD9A00316F9B /* DBConnection.swift in Sources */,
 			);

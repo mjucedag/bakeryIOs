@@ -1,12 +1,11 @@
 struct Ticket{
-    var date : String
+    var date : String = ""
     var member : Int
     var products: [Product:Int]
     
-    init(date: String, member: Int, products: [Product:Int]){
-        self.date = date
-        self.member = member
-        self.products = products
+    init(member: Int){
+        self.member = DataBase.member
+        self.products = [Product:Int]()
     }
     
     func toJson() ->String{
