@@ -148,10 +148,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P1e-Zi-185">
-                                                    <rect key="frame" x="9" y="11" width="183" height="141"/>
+                                                    <rect key="frame" x="9" y="4" width="183" height="141"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="141" id="D97-V0-iVU"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAC-SH-aZ9">
-                                                    <rect key="frame" x="9" y="166" width="183" height="24"/>
+                                                    <rect key="frame" x="9" y="170" width="183" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -159,14 +162,12 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="P1e-Zi-185" firstAttribute="trailing" secondItem="8QJ-P6-Wch" secondAttribute="trailingMargin" id="4Vs-b1-HrZ"/>
-                                            <constraint firstItem="pAC-SH-aZ9" firstAttribute="top" secondItem="P1e-Zi-185" secondAttribute="bottom" constant="14" id="5lU-va-Qka"/>
-                                            <constraint firstItem="P1e-Zi-185" firstAttribute="top" secondItem="8QJ-P6-Wch" secondAttribute="topMargin" constant="3" id="6WG-rS-pXi"/>
-                                            <constraint firstItem="pAC-SH-aZ9" firstAttribute="trailing" secondItem="8QJ-P6-Wch" secondAttribute="trailingMargin" id="7bB-rq-rDO"/>
-                                            <constraint firstItem="pAC-SH-aZ9" firstAttribute="top" secondItem="P1e-Zi-185" secondAttribute="bottom" constant="14" id="FVd-hv-wkR"/>
-                                            <constraint firstItem="pAC-SH-aZ9" firstAttribute="leading" secondItem="8QJ-P6-Wch" secondAttribute="leadingMargin" constant="1" id="OXV-oo-FzN"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="pAC-SH-aZ9" secondAttribute="bottom" constant="2" id="eg7-ge-ScA"/>
-                                            <constraint firstItem="P1e-Zi-185" firstAttribute="leading" secondItem="8QJ-P6-Wch" secondAttribute="leadingMargin" constant="1" id="fqn-jB-Epk"/>
+                                            <constraint firstItem="P1e-Zi-185" firstAttribute="centerX" secondItem="8QJ-P6-Wch" secondAttribute="centerX" id="Ain-9x-dRJ"/>
+                                            <constraint firstItem="P1e-Zi-185" firstAttribute="top" secondItem="8QJ-P6-Wch" secondAttribute="topMargin" constant="-4" id="CNP-eP-zgN"/>
+                                            <constraint firstItem="P1e-Zi-185" firstAttribute="trailing" secondItem="pAC-SH-aZ9" secondAttribute="trailing" id="LrF-dQ-bu4"/>
+                                            <constraint firstItem="P1e-Zi-185" firstAttribute="leading" secondItem="pAC-SH-aZ9" secondAttribute="leading" id="buU-ik-vcB"/>
+                                            <constraint firstItem="P1e-Zi-185" firstAttribute="leading" secondItem="8QJ-P6-Wch" secondAttribute="leadingMargin" constant="1" id="cli-MR-pbn"/>
+                                            <constraint firstItem="pAC-SH-aZ9" firstAttribute="top" secondItem="P1e-Zi-185" secondAttribute="bottom" constant="25" id="zFU-UE-Bqw"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="ivProduct" destination="P1e-Zi-185" id="WJS-7u-Uzn"/>
@@ -232,12 +233,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZc-oP-fdA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2472" y="201"/>
+            <point key="canvasLocation" x="2403" y="130"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="ICa-9g-gxf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sDW-cB-EtC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="DetailViewController" id="lMK-up-37P" customClass="DetailViewController" customModule="bakery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nCc-1K-q6x">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -348,8 +348,9 @@
                         <outlet property="tfPicker" destination="yHE-Xk-XOg" id="sxT-9u-q0D"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sDW-cB-EtC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3250.7246376811595" y="200.54347826086959"/>
+            <point key="canvasLocation" x="3104" y="130"/>
         </scene>
         <!--Ticket-->
         <scene sceneID="vDK-J1-wrt">
@@ -381,7 +382,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Em-Oj-iKh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1662" y="-456"/>
+            <point key="canvasLocation" x="1661" y="-567"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6zU-bW-SEe">
@@ -405,6 +406,7 @@
         <!--Ventas-->
         <scene sceneID="iMR-BJ-cjx">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="upr-7t-m50" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QeR-Kr-v6Y" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Ventas" image="basket" id="g76-fB-9OZ"/>
                     <toolbarItems/>
@@ -417,9 +419,8 @@
                         <segue destination="ycx-L3-sfp" kind="relationship" relationship="rootViewController" id="Xox-tZ-ZLa"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="upr-7t-m50" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660.8695652173915" y="200.54347826086959"/>
+            <point key="canvasLocation" x="1661" y="131"/>
         </scene>
     </scenes>
     <resources>
