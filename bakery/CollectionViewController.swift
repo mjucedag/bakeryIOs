@@ -14,21 +14,22 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var searchBar: UISearchBar!
     
     var buscando = false
-    var filterData = [String]()
+    var nombresFiltrados = [String]()
+    var imgFiltradas = [UIImage]()
     
     var productName = [String]()
-    private func getNombreProduct(){
+    func getNombreProduct(){
         for producto in DataBase.products{
             productName.append(producto.name)
         }
     }
+    var imgProducts: [UIImage] = [UIImage]()
     private func getImageProduct(){
         for producto in DataBase.products{
             imgProducts.append(producto.image)
         }
     }
     
-    var imgProducts: [UIImage] = []
     var categorias: [String] = ["Pan","Croissant","Navidad","Bolleria","Otros"]
     let imgCategorias: [UIImage] = [
         UIImage(named: "bread")!,
@@ -38,8 +39,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         UIImage(named: "other")!,
     ]
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //        collectionView.delegate? = self
@@ -48,7 +47,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         searchBar.returnKeyType = UIReturnKeyType.done
         getNombreProduct()
         getImageProduct()
-        
     }
     
     // MARK: Delegate
@@ -67,7 +65,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     // MARK: DataSource
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         if buscando {
-            return filterData.count
+            return nombresFiltrados.count
         }
         return DataBase.products.count
     }
@@ -76,14 +74,18 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! CollectionViewCell
 
         let textoLabel : String!
+        let image: UIImage!
         
         if buscando {
-            textoLabel = filterData[indexPath.row]
+            textoLabel = nombresFiltrados[indexPath.row]
+//            image = imgFiltradas[indexPath.row]
+            image = nil //Al filtrar no muestra ninguna imagen
         }else{
-            textoLabel = productName[indexPath.item]
+            textoLabel = productName[indexPath.row]
+            image = imgProducts[indexPath.row]
         }
         
-        cell.ivProduct.image = imgProducts[indexPath.item]        
+        cell.ivProduct.image = image
         cell.lbProduct.text = textoLabel
         
         return cell
@@ -91,9 +93,9 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     // Section
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
+        return 1
         //Pinta 4 veces todos los elementos
-        return categorias.count
+//        return categorias.count
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -111,7 +113,8 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             collectionView.reloadData()
         }else{
             buscando = true
-            filterData = productName.filter({$0 == searchBar.text})
+            nombresFiltrados = productName.filter({$0.lowercased().contains(searchText.lowercased())})
+            //llenar imgFiltradas, para que se muestren al buscar
             collectionView.reloadData()
         }
     }
