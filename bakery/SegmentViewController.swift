@@ -16,9 +16,10 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var dailyList:[String] = ["Private 1", "Private 2"] //tuplas de la consulta de tickets por dia
     let memberTicketsList:[String] = ["Priv 1", "Priv 2"] //tuplas de la consulta de tickets por empleado
-    let familyTicketsList:[String] = ["aaaa 1", "aaa 2"] //tuplas de la consulta de tickets por familia
+    var familyTicketsList:[String] = ["aaaa 1", "aaa 2"] //tuplas de la consulta de tickets por familia
     
     public static var selectedDate = ""
+    public static var selectedCategory = ""
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
@@ -31,6 +32,12 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
             
         }
         print(SegmentViewController.selectedDate)
+        
+        if(!SegmentViewController.selectedCategory.isEmpty){
+            familyTicketsList = ["aaaa 1", "aaa 2"]
+            myTableView.reloadData()
+        }
+        print(SegmentViewController.selectedCategory)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +108,9 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
             break
         case 2:
             //nada de momento
+            let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let desVC = mainStoryboard.instantiateViewController(withIdentifier: "ByFamilyViewController") as! ByFamilyViewController
+            self.navigationController?.pushViewController(desVC, animated: true)
             break
         default:
             break
