@@ -28,6 +28,7 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = name
         
         // Do any additional setup after loading the view.
         imgImage.image = image

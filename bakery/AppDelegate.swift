@@ -13,9 +13,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //tunear el navigation bar
+        UINavigationBar.appearance().barTintColor = UIColor.blue
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        UIBarButtonItem.appearance().tintColor = UIColor.white
+        let navBgImage:UIImage = UIImage(named:"madera.jpg")!
+        UINavigationBar.appearance().setBackgroundImage(navBgImage, for: .default)
+        
         return true
     }
 
