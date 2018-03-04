@@ -265,9 +265,12 @@
                                     <constraint firstAttribute="height" constant="30" id="1GH-BZ-Crw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Añadiendo producto">
+                                <state key="normal" title="Añadir producto">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="onAlertTapped:" destination="lMK-up-37P" eventType="touchUpInside" id="xgd-jP-cc1"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MfC-P2-qvK">
                                 <rect key="frame" x="49" y="20" width="316" height="239"/>
@@ -406,7 +409,6 @@
         <!--Ventas-->
         <scene sceneID="iMR-BJ-cjx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="upr-7t-m50" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QeR-Kr-v6Y" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Ventas" image="basket" id="g76-fB-9OZ"/>
                     <toolbarItems/>
@@ -419,6 +421,7 @@
                         <segue destination="ycx-L3-sfp" kind="relationship" relationship="rootViewController" id="Xox-tZ-ZLa"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="upr-7t-m50" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1661" y="131"/>
         </scene>

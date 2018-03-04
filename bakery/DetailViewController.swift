@@ -26,6 +26,14 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     var categorias = ["Pan","Bolleria","Croissant","Navidad","Otros"]
     
+    //AÑADIR PRODUCTO AL TICKET
+    @IBAction func onAlertTapped(_ sender: Any) {
+         let alert = UIAlertController(title: "Agregado al ticket", message: "", preferredStyle: .alert)
+         let action = UIAlertAction(title: "Cerrar ventana", style: .default) { (action) in self.setDicctionaryOfPreviousTicket() }
+         alert.addAction(action)
+         present(alert, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = name
@@ -67,6 +75,21 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         tfPicker.endEditing(true)
     }
     
+    func setDicctionaryOfPreviousTicket(){
+        //Si existe ya almacenado ese ID Producto en nuestro Diccionario
+        //Tan solo tengo que sumar la cantidad guardada, con la nueva cantidad seleccionada
+        if let countExists = DataBase.dPreviousTicket[self.id] {
+            let countExistsInNumber = Int(countExists)
+            let newCountInNumber = Int(tfPicker.text!)
+            let sumCount = countExistsInNumber! + newCountInNumber!
+            
+            DataBase.dPreviousTicket[self.id] = String(sumCount);
+        }else{//Sino existe el producto como guardado, tan solo crear el nuevo Id Producto en el diccionario
+            DataBase.dPreviousTicket[self.id] = tfPicker.text;
+        }
+        
+        print("Id: " + self.id + " Cantidad: " + DataBase.dPreviousTicket[self.id]!)
+    }
     
     
     /*
@@ -80,4 +103,3 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
      */
     
 }
-
