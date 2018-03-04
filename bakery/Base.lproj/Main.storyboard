@@ -548,40 +548,40 @@
             </objects>
             <point key="canvasLocation" x="1660.8695652173915" y="906.52173913043487"/>
         </scene>
-        <!--View Controller-->
+        <!--Segment View Controller-->
         <scene sceneID="z2Z-Oz-Jcf">
             <objects>
-                <viewController id="yJS-jM-v45" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SegmentViewController" id="yJS-jM-v45" customClass="SegmentViewController" customModule="bakery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dFH-wE-fE1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-Jh-Til">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YtT-Jh-Til">
                                 <rect key="frame" x="20" y="87" width="374" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Por Dia"/>
                                     <segment title="Por Empleado"/>
                                     <segment title="Por Familia"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentedControlActionChanged:" destination="yJS-jM-v45" eventType="valueChanged" id="K2w-DS-1gc"/>
+                                </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sds-Iy-B9a">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sds-Iy-B9a">
                                 <rect key="frame" x="90" y="123" width="240" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.49970260599999999" blue="0.031318828780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Consultar">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="h7W-G0-7CC" kind="presentation" id="d2q-kY-r7M"/>
+                                    <action selector="showQueryPopup:" destination="yJS-jM-v45" eventType="touchUpInside" id="RzD-QH-nsQ"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8bG-Rk-qdD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8bG-Rk-qdD">
                                 <rect key="frame" x="0.0" y="161" width="414" height="526"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="DkY-oO-DVp">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" id="DkY-oO-DVp">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DkY-oO-DVp" id="SgL-sD-S5M">
@@ -590,14 +590,32 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="yJS-jM-v45" id="R6R-9U-zbr"/>
+                                    <outlet property="delegate" destination="yJS-jM-v45" id="dSs-vp-diq"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YtT-Jh-Til" firstAttribute="leading" secondItem="dFH-wE-fE1" secondAttribute="leadingMargin" id="Db2-Uh-pRN"/>
+                            <constraint firstItem="sds-Iy-B9a" firstAttribute="leading" secondItem="OIV-FT-GSO" secondAttribute="leading" constant="90" id="GNJ-O6-WRn"/>
+                            <constraint firstItem="sds-Iy-B9a" firstAttribute="top" secondItem="YtT-Jh-Til" secondAttribute="bottom" constant="8" symbolic="YES" id="MfC-yp-7e1"/>
+                            <constraint firstAttribute="trailing" secondItem="8bG-Rk-qdD" secondAttribute="trailing" id="PFW-U5-a9Y"/>
+                            <constraint firstItem="8bG-Rk-qdD" firstAttribute="top" secondItem="sds-Iy-B9a" secondAttribute="bottom" constant="8" symbolic="YES" id="T8W-4R-c7c"/>
+                            <constraint firstItem="OIV-FT-GSO" firstAttribute="trailing" secondItem="sds-Iy-B9a" secondAttribute="trailing" constant="84" id="VQ6-Y3-S5V"/>
+                            <constraint firstItem="8bG-Rk-qdD" firstAttribute="bottom" secondItem="OIV-FT-GSO" secondAttribute="bottom" id="Y5F-rL-2AZ"/>
+                            <constraint firstItem="YtT-Jh-Til" firstAttribute="centerX" secondItem="8bG-Rk-qdD" secondAttribute="centerX" id="cZQ-NA-MIr"/>
+                            <constraint firstItem="8bG-Rk-qdD" firstAttribute="leading" secondItem="dFH-wE-fE1" secondAttribute="leading" id="jJV-nE-rNN"/>
+                            <constraint firstItem="YtT-Jh-Til" firstAttribute="top" secondItem="OIV-FT-GSO" secondAttribute="top" constant="23" id="kvt-dT-YvM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="OIV-FT-GSO"/>
                     </view>
                     <navigationItem key="navigationItem" id="m2O-CE-XXh"/>
                     <connections>
                         <outlet property="datePicker" destination="kVh-Pc-TbH" id="xXd-1h-E6O"/>
+                        <outlet property="mySegmentegControl" destination="YtT-Jh-Til" id="R0P-sj-ntD"/>
+                        <outlet property="myTableView" destination="8bG-Rk-qdD" id="iPw-8A-1Uq"/>
                         <outlet property="okButton" destination="428-sG-Bqt" id="lnq-3g-Uyc"/>
                         <outlet property="titleLabel" destination="zKC-xE-JsY" id="U8v-2u-C4H"/>
                     </connections>
@@ -609,7 +627,7 @@
         <!--Date Popup View Controller-->
         <scene sceneID="4sU-Uo-scT">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="h7W-G0-7CC" customClass="DatePopupViewController" customModule="bakery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DatePopupViewController" modalPresentationStyle="overCurrentContext" id="h7W-G0-7CC" customClass="DatePopupViewController" customModule="bakery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hr0-QN-teS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

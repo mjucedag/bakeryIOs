@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D1C1D0A204C7E91002BA8A6 /* SegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C1D09204C7E91002BA8A6 /* SegmentViewController.swift */; };
 		2D482F23201E0AF800967FCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482F22201E0AF800967FCA /* AppDelegate.swift */; };
 		2D482F25201E0AF800967FCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482F24201E0AF800967FCA /* LoginViewController.swift */; };
 		2D482F28201E0AF800967FCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D482F26201E0AF800967FCA /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D1C1D09204C7E91002BA8A6 /* SegmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentViewController.swift; sourceTree = "<group>"; };
 		2D482F1F201E0AF800967FCA /* bakery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bakery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D482F22201E0AF800967FCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D482F24201E0AF800967FCA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				A19D2BB520471A7C00CACBC4 /* CollectionViewController.swift */,
 				A175505D204AB30B00130E0E /* SectionView.swift */,
 				2D8C2F72204C4346000047C1 /* DatePopupViewController.swift */,
+				2D1C1D09204C7E91002BA8A6 /* SegmentViewController.swift */,
 			);
 			path = bakery;
 			sourceTree = "<group>";
@@ -159,8 +162,6 @@
 		2D8C2F74204C6B70000047C1 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				49FEEB1E204C59D7000AA14B /* TicketTableViewCell.swift */,
-				49FEEB1C204C55BC000AA14B /* TicketTableViewController.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -318,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D1C1D0A204C7E91002BA8A6 /* SegmentViewController.swift in Sources */,
 				A19D2BB620471A7C00CACBC4 /* CollectionViewController.swift in Sources */,
 				A19D2BB42047174400CACBC4 /* CollectionViewCell.swift in Sources */,
 				A175505E204AB30B00130E0E /* SectionView.swift in Sources */,
