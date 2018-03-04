@@ -56,6 +56,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         let desVC = mainStoryboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         desVC.image = DataBase.products[indexPath.item].image
         desVC.name = DataBase.products[indexPath.item].name
+        desVC.familia = DataBase.products[indexPath.item].idFamily
         desVC.desc = DataBase.products[indexPath.item].description
         desVC.price = String(DataBase.products[indexPath.item].price)
         self.navigationController?.pushViewController(desVC, animated: true)
