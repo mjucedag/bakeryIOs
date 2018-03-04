@@ -12,6 +12,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
 
     @IBOutlet weak var mySegmentegControl: UISegmentedControl!
     @IBOutlet weak var myTableView: UITableView!
+    @IBOutlet weak var selectedDate: UILabel!
     
     var dailyList:[String] = ["Private 1", "Private 2"] //tuplas de la consulta de tickets por dia
     let memberTicketsList:[String] = ["Priv 1", "Priv 2"] //tuplas de la consulta de tickets por empleado
@@ -24,6 +25,10 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
         if(!SegmentViewController.selectedDate.isEmpty){
             dailyList = ["Private changed 1", "Private changed 2"]
             myTableView.reloadData()
+            selectedDate.text=SegmentViewController.selectedDate
+            SegmentViewController.selectedDate = ""
+            //noQueryAlert("") llama cuando no hay consulta
+            
         }
         print(SegmentViewController.selectedDate)
     }
@@ -99,7 +104,18 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
             break
         default:
             break
-        }    }
+        }
+        
+    }
+    
+    //tras la query de DataBase y no obtener resultado, salta este alert
+    func noQueryAlert(_ sender: Any) {
+        let alert = UIAlertController(title: "No hay tickets para este día", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Cerrar ventana", style: .default) { (action) in}
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
