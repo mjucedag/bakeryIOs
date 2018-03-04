@@ -12,6 +12,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
 
     @IBOutlet weak var mySegmentegControl: UISegmentedControl!
     @IBOutlet weak var myTableView: UITableView!
+    @IBOutlet weak var selectedDate: UILabel!
     
     var dailyList:[String] = ["Private 1", "Private 2"] //tuplas de la consulta de tickets por dia
     let memberTicketsList:[String] = ["Priv 1", "Priv 2"] //tuplas de la consulta de tickets por empleado
@@ -24,6 +25,9 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
         if(!SegmentViewController.selectedDate.isEmpty){
             dailyList = ["Private changed 1", "Private changed 2"]
             myTableView.reloadData()
+            selectedDate.text=SegmentViewController.selectedDate
+            SegmentViewController.selectedDate = ""
+            
         }
         print(SegmentViewController.selectedDate)
     }
