@@ -27,6 +27,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
             myTableView.reloadData()
             selectedDate.text=SegmentViewController.selectedDate
             SegmentViewController.selectedDate = ""
+            //noQueryAlert("") llama cuando no hay consulta
             
         }
         print(SegmentViewController.selectedDate)
@@ -103,7 +104,18 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
             break
         default:
             break
-        }    }
+        }
+        
+    }
+    
+    //tras la query de DataBase y no obtener resultado, salta este alert
+    func noQueryAlert(_ sender: Any) {
+        let alert = UIAlertController(title: "No hay tickets para este día", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Cerrar ventana", style: .default) { (action) in}
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
