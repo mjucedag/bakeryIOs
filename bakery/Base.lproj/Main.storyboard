@@ -716,6 +716,7 @@
                         <outlet property="okButton" destination="428-sG-Bqt" id="lnq-3g-Uyc"/>
                         <outlet property="selectedDate" destination="Et7-B5-i2B" id="FOE-aN-QB1"/>
                         <outlet property="titleLabel" destination="zKC-xE-JsY" id="U8v-2u-C4H"/>
+                        <outlet property="totalTicket" destination="lfB-g8-rOg" id="dTy-v3-WwQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Em-Oj-iKh" userLabel="First Responder" sceneMemberID="firstResponder"/>

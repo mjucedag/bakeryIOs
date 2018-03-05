@@ -25,7 +25,7 @@ class DatePopupViewController: UIViewController {
         
         datePicker.datePickerMode = UIDatePickerMode.date
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy"
+        dateFormatter.dateFormat = "yyyy/MM/dd"
         let selectedDate = dateFormatter.string(from: datePicker.date)
         
         SegmentViewController.selectedDate = selectedDate
