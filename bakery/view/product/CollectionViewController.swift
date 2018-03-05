@@ -130,12 +130,13 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         
         let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let desVC = mainStoryboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        desVC.image = DataBase.products[indexPath.item].image
-        desVC.name = DataBase.products[indexPath.item].name
-        desVC.familia = DataBase.products[indexPath.item].idFamily
-        desVC.desc = DataBase.products[indexPath.item].description
-        desVC.price = DataBase.products[indexPath.item].price
-        desVC.id = String(DataBase.products[indexPath.item].id)
+        let productoToDetail = productos[indexPath[0]][indexPath[1]]
+        desVC.image = productoToDetail.image
+        desVC.name = productoToDetail.name
+        desVC.familia = productoToDetail.idFamily
+        desVC.desc = productoToDetail.description
+        desVC.price = productoToDetail.price
+        desVC.id = String(productoToDetail.id)
         self.navigationController?.pushViewController(desVC, animated: true)
     }
     
