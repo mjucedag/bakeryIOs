@@ -40,8 +40,18 @@ class DBConnection{
     }
     
     func getTickets(date:String) ->[[String:Any]]{
-        var tickets = getData(table:"ticket?date=\(date)")
-        tickets.enumerated().forEach{ k,t in
+        let tickets = getData(table:"ticket?date=\(date)")
+        return getTickets(data: tickets)
+    }
+    
+    func getTickets(member:Int) ->[[String:Any]]{
+        let tickets = getData(table:"ticket?idmember=\(member)")
+        return getTickets(data: tickets)
+    }
+    
+    func getTickets(data: [[String:Any]])->[[String:Any]]{
+        var data = data
+        data.enumerated().forEach{ k,t in
             let idTicket = t["id"]
             
             if idTicket != nil {
@@ -50,10 +60,10 @@ class DBConnection{
                 details.forEach{d in
                     total += Double(d["price"] as? String ?? "0.00")!
                 }
-                tickets[k]["total"] = total
+                data[k]["total"] = total
             }
         }
-        return tickets
+        return data
     }
     
     func postTicket(extra: String) {

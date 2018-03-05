@@ -8,15 +8,35 @@
 
 import UIKit
 
-class MembersViewController: UIViewController {
+class MembersViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return members.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int)-> String?{
+        return members[row]["login"] as? String ?? ""
+    }
+    
     
     @IBOutlet weak var titlePicker: UILabel!
     @IBOutlet weak var membersPicker: UIPickerView!
     @IBOutlet weak var okPicker: UIButton!
+    var members = [[String:Any]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        membersPicker.delegate = self
+        membersPicker.dataSource = self
+        
+        members = DBConnection().getData(table: "member")
+        
         // Do any additional setup after loading the view.
     }
 

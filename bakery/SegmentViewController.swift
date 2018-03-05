@@ -16,14 +16,22 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var totalTicket: UILabel!
     
     var dailyList:[String] = [] //tuplas de la consulta de tickets por dia
-    let memberTicketsList:[String] = ["Priv 1", "Priv 2"] //tuplas de la consulta de tickets por empleado
+    var memberTicketsList:[String] = [String]() //tuplas de la consulta de tickets por empleado
     var familyTicketsList:[String] = ["aaaa 1", "aaa 2"] //tuplas de la consulta de tickets por familia
     
     public static var selectedDate = ""
     public static var selectedCategory = ""
+    var selectedMember = 3
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
+        
+        let result = DBConnection().getTickets(member: selectedMember)
+        result.forEach{ r in
+            memberTicketsList.append(String(format: "Id:\(r["id"]!) \t Fecha: \(r["date"]!) \t Total: %.2f€", r["total"] as! Double))
+        }
+        print("tuplas \(result.count) membTickerts: \(memberTicketsList)")
+        
         if(!SegmentViewController.selectedDate.isEmpty){
             //Call API Rest
         
@@ -76,6 +84,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
             returnValue = dailyList.count
             break
         case 1:
+            
             returnValue = memberTicketsList.count
             break
         case 2:
