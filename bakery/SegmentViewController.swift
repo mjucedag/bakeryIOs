@@ -122,10 +122,11 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
             self.navigationController?.pushViewController(desVC, animated: true)
             break
         case 1:
-            //nada de momento
+            let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let desVC = mainStoryboard.instantiateViewController(withIdentifier: "MembersViewController") as! MembersViewController
+            self.navigationController?.pushViewController(desVC, animated: true)
             break
         case 2:
-            //nada de momento
             let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let desVC = mainStoryboard.instantiateViewController(withIdentifier: "ByFamilyViewController") as! ByFamilyViewController
             self.navigationController?.pushViewController(desVC, animated: true)
