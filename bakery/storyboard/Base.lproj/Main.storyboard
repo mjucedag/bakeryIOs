@@ -904,10 +904,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="basket" width="32" height="32"/>
-        <image name="list" width="32" height="32"/>
+        <image name="basket" width="16" height="16"/>
+        <image name="list" width="16" height="16"/>
         <image name="login" width="600" height="340"/>
-        <image name="logo" width="1500" height="1600"/>
-        <image name="search" width="32" height="32"/>
+        <image name="logo" width="750" height="800"/>
+        <image name="search" width="16" height="16"/>
     </resources>
 </document>
