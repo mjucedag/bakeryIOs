@@ -51,7 +51,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
                 default:
                     break
             }
-
         }
     }
     
