@@ -233,7 +233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZc-oP-fdA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2252" y="107"/>
+            <point key="canvasLocation" x="2280" y="133"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="ICa-9g-gxf">
@@ -621,6 +621,57 @@
             </objects>
             <point key="canvasLocation" x="2280" y="-1448"/>
         </scene>
+        <!--Members View Controller-->
+        <scene sceneID="7ya-FK-ZOU">
+            <objects>
+                <viewController storyboardIdentifier="MembersViewController" id="H3O-SM-xPA" customClass="MembersViewController" customModule="bakery" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jDX-kF-veC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yqL-4S-PPb">
+                                <rect key="frame" x="65" y="243" width="285" height="251"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selecciona empleado" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKT-MJ-PkR">
+                                        <rect key="frame" x="0.0" y="0.0" width="285" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vTO-hx-Jf8">
+                                        <rect key="frame" x="4" y="46" width="277" height="163"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KL1-Ph-G4x">
+                                        <rect key="frame" x="58" y="217" width="169" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <state key="normal" title="Aceptar empleado"/>
+                                        <connections>
+                                            <action selector="saveDate_TouchUpInside:" destination="h7W-G0-7CC" eventType="touchUpInside" id="Y8p-dz-MAl"/>
+                                            <action selector="saveDate_TouchUpInside:" destination="yJS-jM-v45" eventType="touchUpInside" id="cFo-bC-MWy"/>
+                                            <action selector="saveMember:" destination="H3O-SM-xPA" eventType="touchUpInside" id="Zei-L8-eKv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.67986589670181274" green="0.61050981283187866" blue="0.52102673053741455" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="cPs-UL-4RT"/>
+                    </view>
+                    <connections>
+                        <outlet property="membersPicker" destination="vTO-hx-Jf8" id="rBS-Lb-0gm"/>
+                        <outlet property="okPicker" destination="KL1-Ph-G4x" id="X8w-AR-apF"/>
+                        <outlet property="titlePicker" destination="MKT-MJ-PkR" id="CcC-ZJ-VMC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QgV-QX-6tS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3066.666666666667" y="-1449.4565217391305"/>
+        </scene>
         <!--Segment View Controller-->
         <scene sceneID="z2Z-Oz-Jcf">
             <objects>
@@ -718,11 +769,12 @@
                         <outlet property="okButton" destination="428-sG-Bqt" id="lnq-3g-Uyc"/>
                         <outlet property="selectedDate" destination="Et7-B5-i2B" id="FOE-aN-QB1"/>
                         <outlet property="titleLabel" destination="zKC-xE-JsY" id="U8v-2u-C4H"/>
+                        <outlet property="totalTicket" destination="lfB-g8-rOg" id="dTy-v3-WwQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Em-Oj-iKh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2313" y="-708"/>
+            <point key="canvasLocation" x="2301" y="-725"/>
         </scene>
         <!--Date Popup View Controller-->
         <scene sceneID="4sU-Uo-scT">
@@ -764,7 +816,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.74111479922279799" green="0.74111479922279799" blue="0.74111479922279799" alpha="0.50704225352112675" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.67986589670181274" green="0.61050981283187866" blue="0.52102673053741455" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="IV6-Cj-m22"/>
                     </view>
                     <connections>
@@ -775,7 +827,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fr-kq-3DK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3067" y="-708"/>
+            <point key="canvasLocation" x="3068" y="-725"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6zU-bW-SEe">

@@ -13,8 +13,9 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var mySegmentegControl: UISegmentedControl!
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var selectedDate: UILabel!
+    @IBOutlet weak var totalTicket: UILabel!
     
-    var dailyList:[String] = ["Private 1", "Private 2"] //tuplas de la consulta de tickets por dia
+    var dailyList:[String] = [] //tuplas de la consulta de tickets por dia
     let memberTicketsList:[String] = ["Priv 1", "Priv 2"] //tuplas de la consulta de tickets por empleado
     var familyTicketsList:[String] = ["aaaa 1", "aaa 2"] //tuplas de la consulta de tickets por familia
     
@@ -24,12 +25,28 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         if(!SegmentViewController.selectedDate.isEmpty){
-            dailyList = ["Private changed 1", "Private changed 2"]
-            myTableView.reloadData()
-            selectedDate.text=SegmentViewController.selectedDate
-            SegmentViewController.selectedDate = ""
-            //noQueryAlert("") llama cuando no hay consulta
-            
+            //Call API Rest
+        
+            let result = DBConnection().getTickets(date: SegmentViewController.selectedDate)
+            if result.isEmpty == true {
+                dailyList = []
+                noQueryAlert("") //llama cuando no hay consulta
+            }else{
+                var totalTicket = 0.0
+                dailyList = []
+                for r in result {
+                    let total = r["total"]
+                    totalTicket += total as! Double
+                    let id = r["id"]
+                    let str = "Id: " + String(describing: id!) + ". Total: " + String(describing: total!)
+                    dailyList.append(str)
+                }
+                self.totalTicket.text! = String (totalTicket)
+                myTableView.reloadData()
+                selectedDate.text=SegmentViewController.selectedDate
+                SegmentViewController.selectedDate = ""
+                
+            }
         }
         print(SegmentViewController.selectedDate)
         
@@ -44,7 +61,8 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
 
         // Do any additional setup after loading the view.
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -104,10 +122,11 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
             self.navigationController?.pushViewController(desVC, animated: true)
             break
         case 1:
-            //nada de momento
+            let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let desVC = mainStoryboard.instantiateViewController(withIdentifier: "MembersViewController") as! MembersViewController
+            self.navigationController?.pushViewController(desVC, animated: true)
             break
         case 2:
-            //nada de momento
             let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let desVC = mainStoryboard.instantiateViewController(withIdentifier: "ByFamilyViewController") as! ByFamilyViewController
             self.navigationController?.pushViewController(desVC, animated: true)

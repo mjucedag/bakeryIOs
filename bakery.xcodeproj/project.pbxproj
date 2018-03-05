@@ -15,6 +15,7 @@
 		2D482F2D201E0AF800967FCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D482F2B201E0AF800967FCA /* LaunchScreen.storyboard */; };
 		2D482F38201E0AF800967FCA /* bakeryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482F37201E0AF800967FCA /* bakeryTests.swift */; };
 		2D482F43201E0AF800967FCA /* bakeryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482F42201E0AF800967FCA /* bakeryUITests.swift */; };
+		2D77BE75204CDAB0009C06AE /* MembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D77BE74204CDAB0009C06AE /* MembersViewController.swift */; };
 		2D8C2F73204C4346000047C1 /* DatePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C2F72204C4346000047C1 /* DatePopupViewController.swift */; };
 		2D972A14204B1A1B004E8B14 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D972A13204B1A1B004E8B14 /* DetailViewController.swift */; };
 		33240380204836E700818DB5 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324037F204836E700818DB5 /* Ticket.swift */; };
@@ -62,6 +63,7 @@
 		2D482F3E201E0AF800967FCA /* bakeryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bakeryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D482F42201E0AF800967FCA /* bakeryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bakeryUITests.swift; sourceTree = "<group>"; };
 		2D482F44201E0AF800967FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D77BE74204CDAB0009C06AE /* MembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersViewController.swift; sourceTree = "<group>"; };
 		2D8C2F72204C4346000047C1 /* DatePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePopupViewController.swift; sourceTree = "<group>"; };
 		2D972A13204B1A1B004E8B14 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3324037F204836E700818DB5 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				2D1C1D09204C7E91002BA8A6 /* SegmentViewController.swift */,
 				A17022ED204CA5A300E2653F /* ByFamilyViewController.swift */,
 				A17022F1204CAEEB00E2653F /* CategoryCollectionViewCell.swift */,
+				2D77BE74204CDAB0009C06AE /* MembersViewController.swift */,
 			);
 			path = bakery;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			files = (
 				A17022F2204CAEEB00E2653F /* CategoryCollectionViewCell.swift in Sources */,
 				2D1C1D0A204C7E91002BA8A6 /* SegmentViewController.swift in Sources */,
+				2D77BE75204CDAB0009C06AE /* MembersViewController.swift in Sources */,
 				A19D2BB620471A7C00CACBC4 /* CollectionViewController.swift in Sources */,
 				A19D2BB42047174400CACBC4 /* CollectionViewCell.swift in Sources */,
 				A175505E204AB30B00130E0E /* SectionView.swift in Sources */,
