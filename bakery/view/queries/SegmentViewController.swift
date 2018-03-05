@@ -49,7 +49,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
                     let total = r["total"]
                     totalTicket += total as! Double
                     let id = r["id"]
-                    let str = "Id: " + String(describing: id!) + ". Total: " + String(describing: total!)
+                    let str = "\t\tId: \t\t" + String(describing: id!) + "\t\t\t Total: \t\t" + String(describing: total!) + " €"
                     dailyList.append(str)
                 }
                 self.totalTicket.text! = String (totalTicket)
