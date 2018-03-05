@@ -147,8 +147,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="211"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P1e-Zi-185">
-                                                    <rect key="frame" x="9" y="4" width="183" height="141"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P1e-Zi-185">
+                                                    <rect key="frame" x="9" y="4" width="183" height="128"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="141" id="D97-V0-iVU"/>
                                                     </constraints>
@@ -181,6 +181,15 @@
                                                     <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <size key="shadowOffset" width="1" height="1"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9k-uZ-7bm">
+                                                    <rect key="frame" x="129" y="173" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="AaI-gf-ZxR"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -198,6 +207,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="ivProduct" destination="P1e-Zi-185" id="WJS-7u-Uzn"/>
+                                            <outlet property="lbPrecio" destination="Y9k-uZ-7bm" id="5qt-Mx-uLW"/>
                                             <outlet property="lbProduct" destination="pAC-SH-aZ9" id="cJ3-4h-B9p"/>
                                         </connections>
                                     </collectionViewCell>

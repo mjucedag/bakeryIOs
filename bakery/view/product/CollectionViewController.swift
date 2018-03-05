@@ -60,10 +60,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         resultadoFam.sort{return Int($0["id"] as? String ?? "0")! < Int($1["id"] as? String ?? "0")! }
         for fam in resultadoFam{
             sections.append(fam["family"] as? String ?? "")
-//            idFamilia.append(Int(fam["id"] as? String ?? "0")!)
-            print("familia: \(fam["family"])")
         }
-        print("familias: \(sections)")
     }
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -75,7 +72,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
 
     
-//    var categorias: [String] = ["Pan","Croissant","Navidad","Bolleria","Otros"]
     let imgCategorias: [UIImage] = [
         UIImage(named: "bread")!,
         UIImage(named: "croissant")!,
@@ -148,8 +144,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         let row = indexPath.row
         let producto = productos[section][row]
         
-        cell.lbProduct.text = producto.name
-        
 //        cell.lbPrecio.text = producto.price
         
         var textoLabel : String! = ""
@@ -166,6 +160,11 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 
         cell.ivProduct.image = image
         cell.lbProduct.text = textoLabel
+        cell.lbPrecio.text = String(producto.price) + "€"
+//        cell.lbProduct.text = producto.name
+        
+        cell.layer.borderWidth = 1.5
+        cell.layer.borderColor = UIColor.black.cgColor
         
         return cell
     }
@@ -181,6 +180,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionView", for: indexPath) as! SectionView
         header.imCategoria.image = imgCategorias[indexPath.section]
         header.lbCategoria.text = sections[indexPath.section]
+        header.backgroundColor = UIColor(red: 154/255.0, green: 188/255.0, blue: 254/255.0, alpha: 1.0)
         
         return header
     }
