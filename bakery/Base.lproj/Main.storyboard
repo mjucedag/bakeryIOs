@@ -388,7 +388,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwp-Gf-vEx">
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="TramitarButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwp-Gf-vEx" userLabel="Tramitar Button">
                                         <rect key="frame" x="207" y="0.0" width="207" height="58"/>
                                         <color key="backgroundColor" red="0.0" green="0.4790845513343811" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
@@ -396,7 +396,7 @@
                                             <color key="titleColor" red="0.98301072419657543" green="1" blue="0.99441140561646524" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="tramitar:" destination="s4g-qn-5lv" eventType="touchUpInside" id="Bu1-mu-W9S"/>
+                                            <action selector="tramitar:" destination="s4g-qn-5lv" eventType="touchUpInside" id="JGV-gN-hKV"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -558,7 +558,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Ticket" image="list" id="yHe-Ku-5cD"/>
                     <connections>
-                        <outlet property="cancelTicket" destination="Uwp-Gf-vEx" id="hYz-bQ-TWn"/>
+                        <outlet property="tableView" destination="jAi-Ot-lF0" id="1nc-aU-UJN"/>
+                        <outlet property="totalCartLabel" destination="7OA-12-J0G" id="OIm-D5-5K3"/>
+                        <outlet property="tramitarButton" destination="Uwp-Gf-vEx" id="YVo-lc-zYh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cma-C4-LVU" userLabel="First Responder" sceneMemberID="firstResponder"/>

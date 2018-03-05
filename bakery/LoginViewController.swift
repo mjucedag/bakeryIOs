@@ -59,6 +59,8 @@ class LoginViewController: UIViewController {
         let connected = con.connect()
         if !connected {showError(msg: con.getError()); return false}
         
+        let c = con.getTickets(date: "2018/10/10")
+        
         con.getProducts()
         
         print("productos = \(DataBase.products.count)")

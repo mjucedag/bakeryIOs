@@ -43,12 +43,15 @@ class DBConnection{
         var tickets = getData(table:"ticket?date=\(date)")
         tickets.enumerated().forEach{ k,t in
             let idTicket = t["id"]
-            let details = getData(table:"ticketdetail?idticket=\(idTicket!)")
-            var total:Double = 0
-            details.forEach{d in
-                total += Double(d["price"] as? String ?? "0.00")!
+            
+            if idTicket != nil {
+                let details = getData(table:"ticketdetail?idticket=\(idTicket!)")
+                var total:Double = 0
+                details.forEach{d in
+                    total += Double(d["price"] as? String ?? "0.00")!
+                }
+                tickets[k]["total"] = total
             }
-            tickets[k]["total"] = total
         }
         return tickets
     }
@@ -73,7 +76,7 @@ class DBConnection{
         let group = DispatchGroup()
         let colaGlobal = DispatchQueue.global()
         group.enter()
-        var results:[[String:Any]] = [[:]]
+        var results:[[String:Any]] = [[String:Any]]()
         
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true

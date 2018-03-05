@@ -31,8 +31,8 @@ class TicketTableViewCell: UITableViewCell {
         let quantity = DataBase.cart.products[p]
         imageProduct.image = p.image
         titleLabel.text = p.name
-        quantityLabel.text = String(describing: quantity!)
+        quantityLabel.text = String(describing: quantity ?? 0)
         priceLabel.text = String(format: "%.2f€", p.price)
-        totalLabel.text = String(format: "%.2f€", p.price*Double(quantity!))
+        totalLabel.text = String(format: "%.2f€", p.price*Double(quantity ?? 0))
     }
 }

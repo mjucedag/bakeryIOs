@@ -12,6 +12,7 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var totalCartLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tramitarButton: UIButton!
     
     var productsKeys = Array<Product>()
      
@@ -30,7 +31,7 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let p = DataBase.products[indexPath.row]
+        let p = productsKeys[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell") as! TicketTableViewCell
         cell.setProduct(p)
@@ -49,10 +50,11 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     @objc func refresh(){
         productsKeys = Array(DataBase.cart.products.keys)
-        
+        tramitarButton.isEnabled = productsKeys.count > 0
         totalCartLabel.text = String(format: "Total: %.2f€", DataBase.cart.total)
         tableView.reloadData()
     }
+    
     @IBAction func tramitar(_ sender: Any) {
         let con = DBConnection()
         con.postTicket(extra: DataBase.cart.toJson())
@@ -63,36 +65,27 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: - Table view data source
 
     
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
     // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+ 
 
-    /*
+    
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            DataBase.cart.products.removeValue(forKey: productsKeys[indexPath.row])
             tableView.deleteRows(at: [indexPath], with: .fade)
+            refresh()
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            print("editing")
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

@@ -20,7 +20,9 @@
 		33240380204836E700818DB5 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324037F204836E700818DB5 /* Ticket.swift */; };
 		333F572E2048137B00830AAF /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F572D2048137B00830AAF /* DataBase.swift */; };
 		4935C050204C769900CA7B4C /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935C04F204C769900CA7B4C /* TicketTableViewCell.swift */; };
-		4935C054204CAF8F00CA7B4C /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935C053204CAF8F00CA7B4C /* TicketTableViewController.swift */; };
+		4935C056204CBAE600CA7B4C /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935C055204CBAE500CA7B4C /* TicketTableViewController.swift */; };
+		A17022EE204CA5A300E2653F /* ByFamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17022ED204CA5A300E2653F /* ByFamilyViewController.swift */; };
+		A17022F2204CAEEB00E2653F /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17022F1204CAEEB00E2653F /* CategoryCollectionViewCell.swift */; };
 		A175505E204AB30B00130E0E /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A175505D204AB30B00130E0E /* SectionView.swift */; };
 		A19D2BB42047174400CACBC4 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19D2BB32047174400CACBC4 /* CollectionViewCell.swift */; };
 		A19D2BB620471A7C00CACBC4 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19D2BB520471A7C00CACBC4 /* CollectionViewController.swift */; };
@@ -65,7 +67,9 @@
 		3324037F204836E700818DB5 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		333F572D2048137B00830AAF /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		4935C04F204C769900CA7B4C /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
-		4935C053204CAF8F00CA7B4C /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
+		4935C055204CBAE500CA7B4C /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
+		A17022ED204CA5A300E2653F /* ByFamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByFamilyViewController.swift; sourceTree = "<group>"; };
+		A17022F1204CAEEB00E2653F /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		A175505D204AB30B00130E0E /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		A19D2BB32047174400CACBC4 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		A19D2BB520471A7C00CACBC4 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +126,7 @@
 		2D482F21201E0AF800967FCA /* bakery */ = {
 			isa = PBXGroup;
 			children = (
-				4935C053204CAF8F00CA7B4C /* TicketTableViewController.swift */,
+				4935C055204CBAE500CA7B4C /* TicketTableViewController.swift */,
 				4935C04F204C769900CA7B4C /* TicketTableViewCell.swift */,
 				C50B1AA12045CD2300316F9B /* model */,
 				2D482F22201E0AF800967FCA /* AppDelegate.swift */,
@@ -325,8 +329,8 @@
 				2D1C1D0A204C7E91002BA8A6 /* SegmentViewController.swift in Sources */,
 				A19D2BB620471A7C00CACBC4 /* CollectionViewController.swift in Sources */,
 				A19D2BB42047174400CACBC4 /* CollectionViewCell.swift in Sources */,
-				4935C054204CAF8F00CA7B4C /* TicketTableViewController.swift in Sources */,
 				A175505E204AB30B00130E0E /* SectionView.swift in Sources */,
+				4935C056204CBAE600CA7B4C /* TicketTableViewController.swift in Sources */,
 				A17022EE204CA5A300E2653F /* ByFamilyViewController.swift in Sources */,
 				2D482F25201E0AF800967FCA /* LoginViewController.swift in Sources */,
 				C50B1AA42045CD5A00316F9B /* Product.swift in Sources */,
