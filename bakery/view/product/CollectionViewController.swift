@@ -21,6 +21,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     //
     var productos: [[Product]] = []
+    var productosFiltrados: [[Product]] = []
     var sections: [String] = [String]()
     var seleccionPanArray: [Int] = [Int]()
     var seleccionBolleriaArray: [Int] = [Int]()
@@ -72,18 +73,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     var nombresFiltrados = [String]()
     var imgFiltradas = [UIImage]()
     
-    var productName = [String]()
-    func getNombreProduct(){
-        for producto in DataBase.products{
-            productName.append(producto.name)
-        }
-    }
-    var imgProducts: [UIImage] = [UIImage]()
-    private func getImageProduct(){
-        for producto in DataBase.products{
-            imgProducts.append(producto.image)
-        }
-    }
+
     
 //    var categorias: [String] = ["Pan","Croissant","Navidad","Bolleria","Otros"]
     let imgCategorias: [UIImage] = [
@@ -100,8 +90,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         //        collectionView.dataSource? = self
         //        searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
-//        getNombreProduct()
-//        getImageProduct()
         
         //
         getFamily()
@@ -130,7 +118,12 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         
         let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let desVC = mainStoryboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        let productoToDetail = productos[indexPath[0]][indexPath[1]]
+        
+        let section = indexPath.section
+        let row = indexPath.row
+        
+        let productoToDetail = buscando ? productosFiltrados[section][row] : productos[section][row]
+        
         desVC.image = productoToDetail.image
         desVC.name = productoToDetail.name
         desVC.familia = productoToDetail.idFamily
@@ -143,7 +136,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     // MARK: DataSource
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         if buscando {
-            return nombresFiltrados.count
+            return productosFiltrados[section].count
         }
         return productos[section].count
     }
@@ -163,9 +156,9 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         let image: UIImage!
 
         if buscando {
-            textoLabel = nombresFiltrados[indexPath.row]
-//            image = imgFiltradas[indexPath.row]
-            image = nil //Al filtrar no muestra ninguna imagen
+            let productoFiltrado = productosFiltrados[section][row]
+            textoLabel = productoFiltrado.name
+            image = productoFiltrado.image
         }else{
             textoLabel = producto.name
             image = producto.image
@@ -199,7 +192,19 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             collectionView.reloadData()
         }else{
             buscando = true
-            nombresFiltrados = productName.filter({$0.lowercased().contains(searchText.lowercased())})
+            productosFiltrados.removeAll() //reset filter search ...
+            var arrayProductFilterInSection: [Product] = [Product]()
+            for seccion in productos{
+                for p in seccion{
+                    if p.name.lowercased().contains(searchText.lowercased()) ||
+                        p.description.lowercased().contains(searchText.lowercased()){
+                        arrayProductFilterInSection.append(p)
+                    }
+                }
+                productosFiltrados.append(arrayProductFilterInSection)
+                arrayProductFilterInSection.removeAll()
+            }
+           /* nombresFiltrados = productName.filter({$0.lowercased().contains(searchText.lowercased())})*/
             //llenar imgFiltradas, para que se muestren al buscar
             collectionView.reloadData()
         }
