@@ -17,17 +17,20 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var dailyList:[String] = [] //tuplas de la consulta de tickets por dia
     var memberTicketsList:[String] = [String]() //tuplas de la consulta de tickets por empleado
-    var familyTicketsList:[String] = ["aaaa 1", "aaa 2"] //tuplas de la consulta de tickets por familia
+    var familyTicketsList:[String] = [String]() //tuplas de la consulta de tickets por familia
     
     public static var selectedDate = ""
     public static var selectedCategory = ""
     var selectedMember = 3
+    
+    var totalMembers:Double = 0.00
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         
         let result = DBConnection().getTickets(member: selectedMember)
         result.forEach{ r in
+            totalMembers += r["total"] as! Double
             memberTicketsList.append(String(format: "Id:\(r["id"]!) \t Fecha: \(r["date"]!) \t Total: %.2f€", r["total"] as! Double))
         }
         print("tuplas \(result.count) membTickerts: \(memberTicketsList)")
@@ -56,6 +59,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
                 
             }
         }
+        
         print(SegmentViewController.selectedDate)
         
         if(!SegmentViewController.selectedCategory.isEmpty){
@@ -118,6 +122,20 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     @IBAction func segmentedControlActionChanged(_ sender: Any) {
+        
+        switch(mySegmentegControl.selectedSegmentIndex){
+        case 0:
+            
+            break
+        case 1:
+            queryMember()
+            break
+        case 2:
+            
+            break
+        default:
+            break
+        }
         myTableView.reloadData()
     }
     
@@ -134,6 +152,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
             let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let desVC = mainStoryboard.instantiateViewController(withIdentifier: "MembersViewController") as! MembersViewController
             self.navigationController?.pushViewController(desVC, animated: true)
+            
             break
         case 2:
             let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -146,6 +165,15 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     
+    func queryMember(){
+        totalMembers = 0.00
+        let result = DBConnection().getTickets(member: selectedMember)
+        result.forEach{ r in
+            totalMembers += r["total"] as! Double
+            memberTicketsList.append(String(format: "Id:\(r["id"]!) \t Fecha: \(r["date"]!) \t Total: %.2f€", r["total"] as! Double))
+        }
+        totalTicket.text = String(format: "%.2f", totalMembers)
+    }
     //tras la query de DataBase y no obtener resultado, salta este alert
     func noQueryAlert(_ sender: Any) {
         let alert = UIAlertController(title: "No hay tickets para este día", message: "", preferredStyle: .alert)

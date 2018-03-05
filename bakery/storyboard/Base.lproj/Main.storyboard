@@ -26,7 +26,7 @@
                                 <rect key="frame" x="63" y="356" width="290" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="username"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ji-gn-D5b" colorLabel="IBBuiltInLabel-Blue">
                                 <rect key="frame" x="156" y="579" width="105" height="27"/>
@@ -47,7 +47,7 @@
                                 <rect key="frame" x="63" y="422" width="290" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="1MZ-0I-2mZ">
                                 <rect key="frame" x="51" y="38" width="312" height="237"/>
@@ -543,21 +543,38 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxx-5Y-bH6">
+                                <rect key="frame" x="0.0" y="637" width="414" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.19239957490945647" blue="0.11699582570622125" alpha="0.76774317781690138" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ye6-aD-B3S"/>
+                                </constraints>
+                                <state key="normal" title="Borrar Ticket">
+                                    <color key="titleColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmDeleteTicket:" destination="s4g-qn-5lv" eventType="touchUpInside" id="P4V-Zo-pAf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jAi-Ot-lF0" firstAttribute="bottom" secondItem="hfF-G5-9ql" secondAttribute="bottom" id="3Gf-cf-FbW"/>
+                            <constraint firstItem="cxx-5Y-bH6" firstAttribute="trailing" secondItem="hfF-G5-9ql" secondAttribute="trailing" id="6KC-rA-krg"/>
+                            <constraint firstItem="hfF-G5-9ql" firstAttribute="bottom" secondItem="cxx-5Y-bH6" secondAttribute="bottom" id="G16-nB-G0i"/>
                             <constraint firstItem="hfF-G5-9ql" firstAttribute="trailing" secondItem="Z5f-af-o2O" secondAttribute="trailing" id="Gb2-m7-nQU"/>
                             <constraint firstItem="jAi-Ot-lF0" firstAttribute="leading" secondItem="hfF-G5-9ql" secondAttribute="leading" id="K8E-fs-6ZU"/>
                             <constraint firstItem="jAi-Ot-lF0" firstAttribute="top" secondItem="Z5f-af-o2O" secondAttribute="bottom" constant="10" id="NMt-08-t90"/>
                             <constraint firstItem="Z5f-af-o2O" firstAttribute="leading" secondItem="hfF-G5-9ql" secondAttribute="leading" id="Nf5-gf-L6u"/>
                             <constraint firstItem="jAi-Ot-lF0" firstAttribute="trailing" secondItem="hfF-G5-9ql" secondAttribute="trailing" id="cP3-WU-i9Q"/>
+                            <constraint firstItem="cxx-5Y-bH6" firstAttribute="leading" secondItem="hfF-G5-9ql" secondAttribute="leading" id="ftZ-j7-9nF"/>
                             <constraint firstItem="Z5f-af-o2O" firstAttribute="top" secondItem="hfF-G5-9ql" secondAttribute="top" id="z7E-Y7-hoC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hfF-G5-9ql"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Ticket" image="list" id="yHe-Ku-5cD"/>
                     <connections>
+                        <outlet property="deleteButton" destination="cxx-5Y-bH6" id="lCR-nH-d8S"/>
                         <outlet property="tableView" destination="jAi-Ot-lF0" id="1nc-aU-UJN"/>
                         <outlet property="totalCartLabel" destination="7OA-12-J0G" id="OIm-D5-5K3"/>
                         <outlet property="tramitarButton" destination="Uwp-Gf-vEx" id="YVo-lc-zYh"/>
@@ -828,7 +845,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.67986589670181274" green="0.61050981283187866" blue="0.52102673053741455" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="IV6-Cj-m22"/>
                     </view>
                     <connections>
