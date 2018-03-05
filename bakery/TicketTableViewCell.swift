@@ -15,6 +15,7 @@ class TicketTableViewCell: UITableViewCell {
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var imageProduct: UIImageView!
+    @IBOutlet weak var viewRow: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,5 +35,14 @@ class TicketTableViewCell: UITableViewCell {
         quantityLabel.text = String(describing: quantity ?? 0)
         priceLabel.text = String(format: "%.2f€", p.price)
         totalLabel.text = String(format: "%.2f€", p.price*Double(quantity ?? 0))
+    }
+    
+    public func drawShadow(){
+        let layer = viewRow.layer
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.5
+        layer.shadowOffset = CGSize.zero
+        layer.shadowRadius = 3
+        //layer.shadowPath = UIBezierPath(rect: viewRow.bounds).cgPath
     }
 }

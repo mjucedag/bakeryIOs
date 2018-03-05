@@ -35,6 +35,7 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell") as! TicketTableViewCell
         cell.setProduct(p)
+        cell.drawShadow()
         return cell
     }
     
