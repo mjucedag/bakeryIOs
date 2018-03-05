@@ -17,7 +17,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var dailyList:[String] = [] //tuplas de la consulta de tickets por dia
     var memberTicketsList:[String] = [String]() //tuplas de la consulta de tickets por empleado
-    var familyTicketsList:[String] = ["aaaa 1", "aaa 2"] //tuplas de la consulta de tickets por familia
+    var familyTicketsList:[String] = [String]() //tuplas de la consulta de tickets por familia
     
     public static var selectedDate = ""
     public static var selectedCategory = ""

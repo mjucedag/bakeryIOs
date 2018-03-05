@@ -35,7 +35,7 @@ class Product: Hashable{
         self.price = price
         self.description = description
         image = UIImage(named: "logo")!
-        downloadImage()
+//        downloadImage()
     }
     
     func downloadImage(){

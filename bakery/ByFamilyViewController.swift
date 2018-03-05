@@ -20,6 +20,14 @@ class ByFamilyViewController: UIViewController, UICollectionViewDelegate, UIColl
         UIImage(named: "pastries")!,
         UIImage(named: "other")!
     ]
+//    var nameCategory: [String] = [String]()
+//    func getNameCat(){
+//        var result = DBConnection().getData(table: "family")
+//        for r in result{
+//            nameCategory.append(r[""])
+//        }
+//    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
