@@ -167,7 +167,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 
         cell.ivProduct.image = image
         cell.lbProduct.text = textoLabel
-        cell.lbPrecio.text = String(producto.price) + "€"
+        cell.lbPrecio.text = String(producto.price) + "   €"
 //        cell.lbProduct.text = producto.name
         
         cell.layer.borderWidth = 1.5
@@ -181,13 +181,13 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         return productos.count
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionView", for: indexPath) as! SectionView
         header.imCategoria.image = imgCategorias[indexPath.section]
         header.lbCategoria.text = sections[indexPath.section]
-        header.backgroundColor = UIColor(red: 154/255.0, green: 188/255.0, blue: 254/255.0, alpha: 1.0)
+        header.lbCategoria.textColor = UIColor.white
+//        header.backgroundColor = UIColor(red: 154/255.0, green: 188/255.0, blue: 254/255.0, alpha: 1.0)
+        header.backgroundColor = UIColor.lightGray
         
         return header
     }

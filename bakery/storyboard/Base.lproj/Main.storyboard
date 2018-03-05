@@ -160,13 +160,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9k-uZ-7bm">
-                                                    <rect key="frame" x="129" y="173" width="42" height="21"/>
+                                                    <rect key="frame" x="85" y="174" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="AaI-gf-ZxR"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
@@ -174,11 +175,11 @@
                                             <constraint firstItem="P1e-Zi-185" firstAttribute="centerX" secondItem="8QJ-P6-Wch" secondAttribute="centerX" id="Ain-9x-dRJ"/>
                                             <constraint firstItem="P1e-Zi-185" firstAttribute="top" secondItem="8QJ-P6-Wch" secondAttribute="topMargin" constant="-4" id="CNP-eP-zgN"/>
                                             <constraint firstItem="P1e-Zi-185" firstAttribute="trailing" secondItem="pAC-SH-aZ9" secondAttribute="trailing" id="LrF-dQ-bu4"/>
-                                            <constraint firstItem="Y9k-uZ-7bm" firstAttribute="trailing" secondItem="pAC-SH-aZ9" secondAttribute="trailing" constant="-21" id="S2k-Rb-cmA"/>
-                                            <constraint firstItem="Y9k-uZ-7bm" firstAttribute="top" secondItem="pAC-SH-aZ9" secondAttribute="bottom" constant="1" id="Tbl-fa-gCe"/>
+                                            <constraint firstItem="Y9k-uZ-7bm" firstAttribute="trailing" secondItem="pAC-SH-aZ9" secondAttribute="trailing" constant="-65" id="S2k-Rb-cmA"/>
+                                            <constraint firstItem="Y9k-uZ-7bm" firstAttribute="top" secondItem="pAC-SH-aZ9" secondAttribute="bottom" constant="2" id="Tbl-fa-gCe"/>
                                             <constraint firstItem="P1e-Zi-185" firstAttribute="leading" secondItem="pAC-SH-aZ9" secondAttribute="leading" id="buU-ik-vcB"/>
                                             <constraint firstItem="P1e-Zi-185" firstAttribute="leading" secondItem="8QJ-P6-Wch" secondAttribute="leadingMargin" constant="1" id="cli-MR-pbn"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="Y9k-uZ-7bm" secondAttribute="bottom" constant="-2" id="wrb-CT-oOR"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Y9k-uZ-7bm" secondAttribute="bottom" constant="-3" id="wrb-CT-oOR"/>
                                             <constraint firstItem="pAC-SH-aZ9" firstAttribute="top" secondItem="P1e-Zi-185" secondAttribute="bottom" constant="5" id="zFU-UE-Bqw"/>
                                         </constraints>
                                         <connections>
