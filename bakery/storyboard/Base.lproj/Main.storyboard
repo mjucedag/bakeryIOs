@@ -26,7 +26,7 @@
                                 <rect key="frame" x="63" y="356" width="290" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="username"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ji-gn-D5b" colorLabel="IBBuiltInLabel-Blue">
                                 <rect key="frame" x="156" y="579" width="105" height="27"/>
@@ -47,7 +47,7 @@
                                 <rect key="frame" x="63" y="422" width="290" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="1MZ-0I-2mZ">
                                 <rect key="frame" x="51" y="38" width="312" height="237"/>
@@ -574,6 +574,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Ticket" image="list" id="yHe-Ku-5cD"/>
                     <connections>
+                        <outlet property="deleteButton" destination="cxx-5Y-bH6" id="lCR-nH-d8S"/>
                         <outlet property="tableView" destination="jAi-Ot-lF0" id="1nc-aU-UJN"/>
                         <outlet property="totalCartLabel" destination="7OA-12-J0G" id="OIm-D5-5K3"/>
                         <outlet property="tramitarButton" destination="Uwp-Gf-vEx" id="YVo-lc-zYh"/>
@@ -904,10 +905,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="basket" width="16" height="16"/>
-        <image name="list" width="16" height="16"/>
+        <image name="basket" width="32" height="32"/>
+        <image name="list" width="32" height="32"/>
         <image name="login" width="600" height="340"/>
-        <image name="logo" width="750" height="800"/>
-        <image name="search" width="16" height="16"/>
+        <image name="logo" width="1500" height="1600"/>
+        <image name="search" width="32" height="32"/>
     </resources>
 </document>

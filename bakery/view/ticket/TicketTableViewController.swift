@@ -13,6 +13,7 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var totalCartLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tramitarButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     
     var productsKeys = Array<Product>()
      
@@ -25,19 +26,7 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
         productsKeys = Array(DataBase.cart.products.keys)
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataBase.cart.products.count
-        
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let p = productsKeys[indexPath.row]
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell") as! TicketTableViewCell
-        cell.setProduct(p)
-        cell.drawShadow()
-        return cell
-    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -52,6 +41,7 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
     @objc func refresh(){
         productsKeys = Array(DataBase.cart.products.keys)
         tramitarButton.isEnabled = productsKeys.count > 0
+        deleteButton.isHidden = !tramitarButton.isEnabled
         totalCartLabel.text = String(format: "Total: %.2f€", DataBase.cart.total)
         tableView.reloadData()
     }
@@ -65,6 +55,20 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     // MARK: - Table view data source
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return DataBase.cart.products.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let p = productsKeys[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell") as! TicketTableViewCell
+        cell.setProduct(p)
+        cell.drawShadow()
+        return cell
+    }
+    
     
     // Override to support conditional editing of the table view.
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -78,9 +82,7 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            DataBase.cart.products.removeValue(forKey: productsKeys[indexPath.row])
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            refresh()
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -89,13 +91,19 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
 
  
 
-    /*
+    
     // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Borrar") { (action, indexPath) in
+            DataBase.cart.products.removeValue(forKey: self.productsKeys[indexPath.row])
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            self.refresh()
+        }
+        
+        
+        return [delete]
     }
-    */
+ 
 
     /*
     // MARK: - Navigation
