@@ -69,13 +69,11 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     var nombresFiltrados = [String]()
     var imgFiltradas = [UIImage]()
     
-
-    
     let imgCategorias: [UIImage] = [
         UIImage(named: "bread")!,
+        UIImage(named: "pastries")!,
         UIImage(named: "croissant")!,
         UIImage(named: "christmas")!,
-        UIImage(named: "pastries")!,
         UIImage(named: "other")!,
     ]
     
