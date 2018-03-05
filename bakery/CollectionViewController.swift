@@ -52,6 +52,29 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     // MARK: Delegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         print("celda seleccionada \(DataBase.products[indexPath.item].name)")
+        print("producto de la familia: \(DataBase.products[indexPath.item].idFamily)")
+        let familia = DataBase.products[indexPath.item].idFamily
+        switch familia {
+        case 1:
+            print("bread")
+            break
+        case 2:
+            print("pastries")
+            break
+        case 3:
+            print("croissant")
+            break
+        case 4:
+            print("christmas")
+            break
+        case 5:
+            print("other")
+            break
+        default:
+            break
+        }
+        
+        
         let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let desVC = mainStoryboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         desVC.image = DataBase.products[indexPath.item].image
