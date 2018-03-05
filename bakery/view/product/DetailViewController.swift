@@ -19,7 +19,7 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     var image = UIImage()
     var name = ""
     var desc = ""
-    var price = ""
+    var price = 0.00
     var id = ""
     var familia = 0
     var pickOption = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
@@ -42,7 +42,7 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         imgImage.image = image
         lbName.text! = categorias[familia-1]
         lbDescription.text! = desc
-        lbPrice.text! = price
+        lbPrice.text! = String(format:"%.2f", price)
         
         //hace el picker de cantidad
         let pickerView = UIPickerView()

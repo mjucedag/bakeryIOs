@@ -39,6 +39,7 @@ class DBConnection{
         }
     }
     
+    
     func getTickets(date:String) ->[[String:Any]]{
         let tickets = getData(table:"ticket?date=\(date)")
         return getTickets(data: tickets)
@@ -46,6 +47,12 @@ class DBConnection{
     
     func getTickets(member:Int) ->[[String:Any]]{
         let tickets = getData(table:"ticket?idmember=\(member)")
+        return getTickets(data: tickets)
+    }
+    
+    func getTickets(cat:Int)->[[String:Any]]{
+        let tickets = getData(table: "ticketcategory?id=\(cat)")
+        print("ticketcategory?id=\(cat)")
         return getTickets(data: tickets)
     }
     

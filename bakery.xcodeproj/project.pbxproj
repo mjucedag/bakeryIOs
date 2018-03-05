@@ -128,24 +128,13 @@
 		2D482F21201E0AF800967FCA /* bakery */ = {
 			isa = PBXGroup;
 			children = (
-				4935C055204CBAE500CA7B4C /* TicketTableViewController.swift */,
-				4935C04F204C769900CA7B4C /* TicketTableViewCell.swift */,
+				C55CA01C204D6836004AE92A /* storyboard */,
+				C55CA01B204D675E004AE92A /* view */,
+				C55CA01A204D673A004AE92A /* presenter */,
 				C50B1AA12045CD2300316F9B /* model */,
 				2D482F22201E0AF800967FCA /* AppDelegate.swift */,
-				2D482F24201E0AF800967FCA /* LoginViewController.swift */,
-				2D482F26201E0AF800967FCA /* Main.storyboard */,
-				2D972A13204B1A1B004E8B14 /* DetailViewController.swift */,
 				2D482F29201E0AF800967FCA /* Assets.xcassets */,
-				2D482F2B201E0AF800967FCA /* LaunchScreen.storyboard */,
 				2D482F2E201E0AF800967FCA /* Info.plist */,
-				A19D2BB32047174400CACBC4 /* CollectionViewCell.swift */,
-				A19D2BB520471A7C00CACBC4 /* CollectionViewController.swift */,
-				A175505D204AB30B00130E0E /* SectionView.swift */,
-				2D8C2F72204C4346000047C1 /* DatePopupViewController.swift */,
-				2D1C1D09204C7E91002BA8A6 /* SegmentViewController.swift */,
-				A17022ED204CA5A300E2653F /* ByFamilyViewController.swift */,
-				A17022F1204CAEEB00E2653F /* CategoryCollectionViewCell.swift */,
-				2D77BE74204CDAB0009C06AE /* MembersViewController.swift */,
 			);
 			path = bakery;
 			sourceTree = "<group>";
@@ -178,9 +167,8 @@
 		C50B1AA12045CD2300316F9B /* model */ = {
 			isa = PBXGroup;
 			children = (
+				C55CA019204D669A004AE92A /* service */,
 				C50B1AA22045CD2A00316F9B /* POSO */,
-				C50B1AA52045CD9A00316F9B /* DBConnection.swift */,
-				333F572D2048137B00830AAF /* DataBase.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -192,6 +180,98 @@
 				3324037F204836E700818DB5 /* Ticket.swift */,
 			);
 			path = POSO;
+			sourceTree = "<group>";
+		};
+		C55CA019204D669A004AE92A /* service */ = {
+			isa = PBXGroup;
+			children = (
+				333F572D2048137B00830AAF /* DataBase.swift */,
+				C50B1AA52045CD9A00316F9B /* DBConnection.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		C55CA01A204D673A004AE92A /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
+		C55CA01B204D675E004AE92A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				C55CA020204D6915004AE92A /* queries */,
+				C55CA01E204D68C2004AE92A /* product */,
+				C55CA01D204D68B0004AE92A /* ticket */,
+				2D482F24201E0AF800967FCA /* LoginViewController.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		C55CA01C204D6836004AE92A /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				2D482F2B201E0AF800967FCA /* LaunchScreen.storyboard */,
+				2D482F26201E0AF800967FCA /* Main.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
+		C55CA01D204D68B0004AE92A /* ticket */ = {
+			isa = PBXGroup;
+			children = (
+				4935C055204CBAE500CA7B4C /* TicketTableViewController.swift */,
+				4935C04F204C769900CA7B4C /* TicketTableViewCell.swift */,
+			);
+			path = ticket;
+			sourceTree = "<group>";
+		};
+		C55CA01E204D68C2004AE92A /* product */ = {
+			isa = PBXGroup;
+			children = (
+				A19D2BB32047174400CACBC4 /* CollectionViewCell.swift */,
+				A19D2BB520471A7C00CACBC4 /* CollectionViewController.swift */,
+				2D972A13204B1A1B004E8B14 /* DetailViewController.swift */,
+				A175505D204AB30B00130E0E /* SectionView.swift */,
+			);
+			path = product;
+			sourceTree = "<group>";
+		};
+		C55CA01F204D68E8004AE92A /* queryByDay */ = {
+			isa = PBXGroup;
+			children = (
+				2D8C2F72204C4346000047C1 /* DatePopupViewController.swift */,
+			);
+			path = queryByDay;
+			sourceTree = "<group>";
+		};
+		C55CA020204D6915004AE92A /* queries */ = {
+			isa = PBXGroup;
+			children = (
+				C55CA022204D6947004AE92A /* queryByFamily */,
+				C55CA021204D6937004AE92A /* queryByMember */,
+				C55CA01F204D68E8004AE92A /* queryByDay */,
+				2D1C1D09204C7E91002BA8A6 /* SegmentViewController.swift */,
+			);
+			path = queries;
+			sourceTree = "<group>";
+		};
+		C55CA021204D6937004AE92A /* queryByMember */ = {
+			isa = PBXGroup;
+			children = (
+				2D77BE74204CDAB0009C06AE /* MembersViewController.swift */,
+			);
+			path = queryByMember;
+			sourceTree = "<group>";
+		};
+		C55CA022204D6947004AE92A /* queryByFamily */ = {
+			isa = PBXGroup;
+			children = (
+				A17022ED204CA5A300E2653F /* ByFamilyViewController.swift */,
+				A17022F1204CAEEB00E2653F /* CategoryCollectionViewCell.swift */,
+			);
+			path = queryByFamily;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

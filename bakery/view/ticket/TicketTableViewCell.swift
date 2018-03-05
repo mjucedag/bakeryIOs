@@ -43,6 +43,5 @@ class TicketTableViewCell: UITableViewCell {
         layer.shadowOpacity = 0.5
         layer.shadowOffset = CGSize.zero
         layer.shadowRadius = 3
-        //layer.shadowPath = UIBezierPath(rect: viewRow.bounds).cgPath
     }
 }
