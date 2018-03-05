@@ -833,7 +833,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.67986589670181274" green="0.61050981283187866" blue="0.52102673053741455" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="IV6-Cj-m22"/>
                     </view>
                     <connections>
