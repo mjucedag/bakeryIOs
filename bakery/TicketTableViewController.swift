@@ -108,16 +108,18 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
     */
     
     //alerta para confirmar el borrado del ticket
-   /* @IBAction func confirmDeleteTicket(_ sender: UIButton) {
+    @IBAction func confirmDeleteTicket(_ sender: UIButton) {
         let actionSheet = UIAlertController(title:"¿Estás seguro/a de borrar el ticket?", message: "No podrás recuperarlo una vez borrado", preferredStyle: UIAlertControllerStyle.actionSheet)
-        let deleteAction = UIAlertAction(title:"Borrar ticket", style:UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in print("Deleted pressed")}
+        let deleteAction = UIAlertAction(title:"Borrar ticket", style:UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in DataBase.cart = Ticket()
+            self.refresh()
+        }
         let cancelAction = UIAlertAction(title:"Cancelar borrado", style:UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in print("Cancel pressed")}
             
         actionSheet.addAction(deleteAction)
         actionSheet.addAction(cancelAction)
         
         self.present(actionSheet, animated: true, completion: nil)
- }*/
+ }
     
 
 }

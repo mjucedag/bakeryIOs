@@ -543,15 +543,31 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxx-5Y-bH6">
+                                <rect key="frame" x="0.0" y="637" width="414" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.19239957490945647" blue="0.11699582570622125" alpha="0.76774317781690138" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ye6-aD-B3S"/>
+                                </constraints>
+                                <state key="normal" title="Borrar Ticket">
+                                    <color key="titleColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmDeleteTicket:" destination="s4g-qn-5lv" eventType="touchUpInside" id="P4V-Zo-pAf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jAi-Ot-lF0" firstAttribute="bottom" secondItem="hfF-G5-9ql" secondAttribute="bottom" id="3Gf-cf-FbW"/>
+                            <constraint firstItem="cxx-5Y-bH6" firstAttribute="trailing" secondItem="hfF-G5-9ql" secondAttribute="trailing" id="6KC-rA-krg"/>
+                            <constraint firstItem="hfF-G5-9ql" firstAttribute="bottom" secondItem="cxx-5Y-bH6" secondAttribute="bottom" id="G16-nB-G0i"/>
                             <constraint firstItem="hfF-G5-9ql" firstAttribute="trailing" secondItem="Z5f-af-o2O" secondAttribute="trailing" id="Gb2-m7-nQU"/>
                             <constraint firstItem="jAi-Ot-lF0" firstAttribute="leading" secondItem="hfF-G5-9ql" secondAttribute="leading" id="K8E-fs-6ZU"/>
                             <constraint firstItem="jAi-Ot-lF0" firstAttribute="top" secondItem="Z5f-af-o2O" secondAttribute="bottom" constant="10" id="NMt-08-t90"/>
                             <constraint firstItem="Z5f-af-o2O" firstAttribute="leading" secondItem="hfF-G5-9ql" secondAttribute="leading" id="Nf5-gf-L6u"/>
                             <constraint firstItem="jAi-Ot-lF0" firstAttribute="trailing" secondItem="hfF-G5-9ql" secondAttribute="trailing" id="cP3-WU-i9Q"/>
+                            <constraint firstItem="cxx-5Y-bH6" firstAttribute="leading" secondItem="hfF-G5-9ql" secondAttribute="leading" id="ftZ-j7-9nF"/>
                             <constraint firstItem="Z5f-af-o2O" firstAttribute="top" secondItem="hfF-G5-9ql" secondAttribute="top" id="z7E-Y7-hoC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hfF-G5-9ql"/>

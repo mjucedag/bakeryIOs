@@ -20,6 +20,7 @@ struct Ticket{
             return out
         }
     }
+    
     init(){
         self.member = DataBase.member
         self.products = [Product:Int]()
