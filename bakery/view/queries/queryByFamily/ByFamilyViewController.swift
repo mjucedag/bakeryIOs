@@ -23,11 +23,11 @@ class ByFamilyViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     var imgCategorias: [UIImage] = [
-        UIImage(named: "bread")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "croissant")!,
-        UIImage(named: "christmas")!,
-        UIImage(named: "other")!
+        UIImage(named: "catBread")!,
+        UIImage(named: "catPastries")!,
+        UIImage(named: "catCroissant")!,
+        UIImage(named: "catChristmas")!,
+        UIImage(named: "catOther")!
     ]
     
     override func viewDidLoad() {

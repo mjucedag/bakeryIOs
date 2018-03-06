@@ -46,11 +46,19 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.reloadData()
     }
     
+    func exitoVenta(_ sender: Any) {
+        let alert = UIAlertController(title: "Venta realizada con exito", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Cerrar ventana", style: .default) { (action) in}
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func tramitar(_ sender: Any) {
         let con = DBConnection()
         con.postTicket(extra: DataBase.cart.toJson())
         DataBase.cart = Ticket()
         refresh()
+        exitoVenta("")
     }
     
     // MARK: - Table view data source
