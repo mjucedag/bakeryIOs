@@ -12,25 +12,27 @@ class ByFamilyViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var nameCategory: [String] = ["bread","croissant","christmas","pastries","other"]
-    var imgCategorias: [UIImage] = [
-        UIImage(named: "bread")!,
-        UIImage(named: "croissant")!,
-        UIImage(named: "christmas")!,
-        UIImage(named: "pastries")!,
-        UIImage(named: "other")!
-    ]
-//    var nameCategory: [String] = [String]()
-//    func getNameCat(){
-//        var result = DBConnection().getData(table: "family")
-//        for r in result{
-//            nameCategory.append(r[""])
-//        }
-//    }
+    var idCategorias: [Int] = [Int]()
     
+    var resultadoFam = DBConnection().getData(table: "family")
+    func getFamily(){
+        resultadoFam.sort{return Int($0["id"] as? String ?? "0")! < Int($1["id"] as? String ?? "0")! }
+        for fam in resultadoFam{
+            idCategorias.append(Int(fam["id"] as? String ?? "0")!)
+        }
+    }
+    
+    var imgCategorias: [UIImage] = [
+        UIImage(named: "catBread")!,
+        UIImage(named: "catPastries")!,
+        UIImage(named: "catCroissant")!,
+        UIImage(named: "catChristmas")!,
+        UIImage(named: "catOther")!
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getFamily()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,8 +41,8 @@ class ByFamilyViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     // MARK: Delegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-        let name = nameCategory[indexPath.row]
-        SegmentViewController.selectedCategory = name
+        let id = idCategorias[indexPath.row]
+        SegmentViewController.selectedCategory = id
         navigationController?.popToRootViewController(animated: true)
     }
     

@@ -20,7 +20,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     var familyTicketsList:[String] = [String]() //tuplas de la consulta de tickets por familia
     
     public static var selectedDate = ""
-    public static var selectedCategory = ""
+    public static var selectedCategory: Int = 0
     var selectedMember = 3
     
     var totalMembers:Double = 0.00
@@ -49,24 +49,38 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
                     let total = r["total"]
                     totalTicket += total as! Double
                     let id = r["id"]
-                    let str = "Id: " + String(describing: id!) + ". Total: " + String(describing: total!)
+                    let str = "\t\tId: \t\t" + String(describing: id!) + "\t\t\t Total: \t\t" + String(describing: total!) + " €"
                     dailyList.append(str)
                 }
                 self.totalTicket.text! = String (totalTicket)
                 myTableView.reloadData()
                 selectedDate.text=SegmentViewController.selectedDate
                 SegmentViewController.selectedDate = ""
-                
             }
         }
         
         print(SegmentViewController.selectedDate)
         
-        if(!SegmentViewController.selectedCategory.isEmpty){
-            familyTicketsList = ["aaaa 1", "aaa 2"]
+        if(SegmentViewController.selectedCategory != 0){
+            let result = DBConnection().getTickets(cat: SegmentViewController.selectedCategory)
+            if result.isEmpty == true {
+                familyTicketsList = []
+                noQueryAlert("")
+            }else{
+                var totalTicket = 0.0
+                familyTicketsList = []
+                for r in result {
+                    let quantity = r["quantity"]
+                    let name = r["name"]
+                    let total = r["total"]
+                    totalTicket += Double(total as? String ?? "0.00")!
+                    let str = String(describing: name!) + ". Cantidad: " + String(describing: quantity!) + " Subtotal: " + String(describing: total!)
+                    familyTicketsList.append(str)
+                }
+                self.totalTicket.text! = String (totalTicket)
+            }
             myTableView.reloadData()
         }
-        print(SegmentViewController.selectedCategory)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

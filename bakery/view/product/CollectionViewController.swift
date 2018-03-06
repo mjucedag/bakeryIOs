@@ -21,6 +21,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     //
     var productos: [[Product]] = []
+    var productosFiltrados: [[Product]] = []
     var sections: [String] = [String]()
     var seleccionPanArray: [Int] = [Int]()
     var seleccionBolleriaArray: [Int] = [Int]()
@@ -50,7 +51,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
                 default:
                     break
             }
-
         }
     }
     
@@ -59,10 +59,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         resultadoFam.sort{return Int($0["id"] as? String ?? "0")! < Int($1["id"] as? String ?? "0")! }
         for fam in resultadoFam{
             sections.append(fam["family"] as? String ?? "")
-//            idFamilia.append(Int(fam["id"] as? String ?? "0")!)
-            print("familia: \(fam["family"])")
         }
-        print("familias: \(sections)")
     }
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -72,25 +69,11 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     var nombresFiltrados = [String]()
     var imgFiltradas = [UIImage]()
     
-    var productName = [String]()
-    func getNombreProduct(){
-        for producto in DataBase.products{
-            productName.append(producto.name)
-        }
-    }
-    var imgProducts: [UIImage] = [UIImage]()
-    private func getImageProduct(){
-        for producto in DataBase.products{
-            imgProducts.append(producto.image)
-        }
-    }
-    
-//    var categorias: [String] = ["Pan","Croissant","Navidad","Bolleria","Otros"]
     let imgCategorias: [UIImage] = [
         UIImage(named: "bread")!,
+        UIImage(named: "pastries")!,
         UIImage(named: "croissant")!,
         UIImage(named: "christmas")!,
-        UIImage(named: "pastries")!,
         UIImage(named: "other")!,
     ]
     
@@ -100,8 +83,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         //        collectionView.dataSource? = self
         //        searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
-//        getNombreProduct()
-//        getImageProduct()
         
         //
         getFamily()
@@ -130,19 +111,25 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         
         let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let desVC = mainStoryboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        desVC.image = DataBase.products[indexPath.item].image
-        desVC.name = DataBase.products[indexPath.item].name
-        desVC.familia = DataBase.products[indexPath.item].idFamily
-        desVC.desc = DataBase.products[indexPath.item].description
-        desVC.price = DataBase.products[indexPath.item].price
-        desVC.id = String(DataBase.products[indexPath.item].id)
+        
+        let section = indexPath.section
+        let row = indexPath.row
+        
+        let productoToDetail = buscando ? productosFiltrados[section][row] : productos[section][row]
+        
+        desVC.image = productoToDetail.image
+        desVC.name = productoToDetail.name
+        desVC.familia = productoToDetail.idFamily
+        desVC.desc = productoToDetail.description
+        desVC.price = productoToDetail.price
+        desVC.id = String(productoToDetail.id)
         self.navigationController?.pushViewController(desVC, animated: true)
     }
     
     // MARK: DataSource
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         if buscando {
-            return nombresFiltrados.count
+            return productosFiltrados[section].count
         }
         return productos[section].count
     }
@@ -154,17 +141,15 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         let row = indexPath.row
         let producto = productos[section][row]
         
-        cell.lbProduct.text = producto.name
-        
 //        cell.lbPrecio.text = producto.price
         
         var textoLabel : String! = ""
         let image: UIImage!
 
         if buscando {
-            textoLabel = nombresFiltrados[indexPath.row]
-//            image = imgFiltradas[indexPath.row]
-            image = nil //Al filtrar no muestra ninguna imagen
+            let productoFiltrado = productosFiltrados[section][row]
+            textoLabel = productoFiltrado.name
+            image = productoFiltrado.image
         }else{
             textoLabel = producto.name
             image = producto.image
@@ -172,6 +157,11 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 
         cell.ivProduct.image = image
         cell.lbProduct.text = textoLabel
+        cell.lbPrecio.text = String(producto.price) + "   €"
+//        cell.lbProduct.text = producto.name
+        
+        cell.layer.borderWidth = 1.5
+        cell.layer.borderColor = UIColor.black.cgColor
         
         return cell
     }
@@ -181,12 +171,13 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         return productos.count
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionView", for: indexPath) as! SectionView
         header.imCategoria.image = imgCategorias[indexPath.section]
         header.lbCategoria.text = sections[indexPath.section]
+        header.lbCategoria.textColor = UIColor.white
+//        header.backgroundColor = UIColor(red: 154/255.0, green: 188/255.0, blue: 254/255.0, alpha: 1.0)
+        header.backgroundColor = UIColor.lightGray
         
         return header
     }
@@ -198,7 +189,19 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             collectionView.reloadData()
         }else{
             buscando = true
-            nombresFiltrados = productName.filter({$0.lowercased().contains(searchText.lowercased())})
+            productosFiltrados.removeAll() //reset filter search ...
+            var arrayProductFilterInSection: [Product] = [Product]()
+            for seccion in productos{
+                for p in seccion{
+                    if p.name.lowercased().contains(searchText.lowercased()) ||
+                        p.description.lowercased().contains(searchText.lowercased()){
+                        arrayProductFilterInSection.append(p)
+                    }
+                }
+                productosFiltrados.append(arrayProductFilterInSection)
+                arrayProductFilterInSection.removeAll()
+            }
+           /* nombresFiltrados = productName.filter({$0.lowercased().contains(searchText.lowercased())})*/
             //llenar imgFiltradas, para que se muestren al buscar
             collectionView.reloadData()
         }
