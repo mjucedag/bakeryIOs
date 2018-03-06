@@ -13,12 +13,14 @@ class ByFamilyViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var collectionView: UICollectionView!
     
     var idCategorias: [Int] = [Int]()
-    
+    var nomCategorias: [String] = [String]()
+
     var resultadoFam = DBConnection().getData(table: "family")
     func getFamily(){
         resultadoFam.sort{return Int($0["id"] as? String ?? "0")! < Int($1["id"] as? String ?? "0")! }
         for fam in resultadoFam{
             idCategorias.append(Int(fam["id"] as? String ?? "0")!)
+            nomCategorias.append(fam["family"] as! String)
         }
     }
     
@@ -55,6 +57,9 @@ class ByFamilyViewController: UIViewController, UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
         
         cell.ivCategory.image = imgCategorias[indexPath.row]
+        cell.lbCategory.text = nomCategorias[indexPath.row]
+        cell.layer.borderWidth = 1.5
+        cell.layer.borderColor = UIColor.black.cgColor
         
         return cell
     }

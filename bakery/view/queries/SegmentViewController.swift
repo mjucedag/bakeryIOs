@@ -31,7 +31,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
         let result = DBConnection().getTickets(member: selectedMember)
         result.forEach{ r in
             totalMembers += r["total"] as! Double
-            memberTicketsList.append(String(format: "Id:\(r["id"]!) \t Fecha: \(r["date"]!) \t Total: %.2f€", r["total"] as! Double))
+            memberTicketsList.append(String(format: "\t\tId:\t\(r["id"]!) \t Fecha: \(r["date"]!) \t Total: %.2f€", r["total"] as! Double))
         }
         print("tuplas \(result.count) membTickerts: \(memberTicketsList)")
         
@@ -74,7 +74,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
                     let name = r["name"]
                     let total = r["total"]
                     totalTicket += Double(total as? String ?? "0.00")!
-                    let str = String(describing: name!) + ". Cantidad: " + String(describing: quantity!) + " Subtotal: " + String(describing: total!)
+                    let str = String(describing: name!) + "\tCant: " + String(describing: quantity!) + "\t\t" + String(describing: total!) + " €"
                     familyTicketsList.append(str)
                 }
                 self.totalTicket.text! = String (totalTicket)
