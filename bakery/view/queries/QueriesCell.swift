@@ -31,12 +31,12 @@ class QueriesCell: UITableViewCell {
             case 0:
                 label1.text! = data["id"] as? String ?? "0"
                 label2.text! = ""
-                label3.text! = String(format: "%.2f€", Double(data["total"] as? String ?? "0.00")!)
+                label3.text! = String(format: "%.2f€", data["total"] as? Double ?? 0.00)
                 break
             case 1:
                 label1.text! = data["id"] as? String ?? "0"
                 label2.text! = data["date"] as? String ?? "0"
-                label3.text! = String(format: "%.2f€", Double(data["total"] as? String ?? "0.00")!)
+                label3.text! = String(format: "%.2f€", data["total"] as? Double ?? 0.00)
                 break
             case 2:
                 label1.text! = data["name"] as? String ?? "0"

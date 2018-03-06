@@ -20,7 +20,7 @@ class MembersViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int)-> String?{
-        return members[row]["login"] as? String ?? ""
+        return members[row]["login"] as? String ?? "No name"
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

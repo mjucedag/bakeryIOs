@@ -44,7 +44,9 @@ class ByFamilyViewController: UIViewController, UICollectionViewDelegate, UIColl
     // MARK: Delegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         let id = idCategorias[indexPath.row]
+        let name = nomCategorias[indexPath.row]
         SegmentViewController.selectedCategory = id
+        SegmentViewController.selectedCategoryName = name
         navigationController?.popToRootViewController(animated: true)
     }
     

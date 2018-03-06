@@ -157,7 +157,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 
         cell.ivProduct.image = image
         cell.lbProduct.text = textoLabel
-        cell.lbPrecio.text = String(producto.price) + "   €"
+        cell.lbPrecio.text = String(format: "%.2f€",  producto.price) 
 //        cell.lbProduct.text = producto.name
         
         cell.layer.borderWidth = 1.5

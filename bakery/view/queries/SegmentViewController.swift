@@ -22,7 +22,8 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     var memberTicketsList:[[String:Any]] = [] //tuplas de la consulta de tickets por empleado
     var familyTicketsList:[[String:Any]] = [] //tuplas de la consulta de tickets por familia
     
-    public static var selectedDate = ""
+    public static var selectedDate: String = "2018/03/06"
+    
     public static var selectedCategory: Int = 0
     public static var selectedMember = 3
     
@@ -33,12 +34,23 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     var totalMember:Double = 0.00
     var totalCategory:Double = 0.00
     
+    var typedDate:String {
+        get{
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            let d = formatter.date(from: SegmentViewController.selectedDate)
+            formatter.dateFormat = "dd/MM/yyyy"
+            let out = formatter.string(from: d!)
+            return out
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         switch(mySegmentegControl.selectedSegmentIndex){
             case 0:
                 queryDate()
-                selectedDate.text = SegmentViewController.selectedDate
+                selectedDate.text = typedDate
                 totalTicket.text = String(format: "%.2f", totalDate)
             break
             case 1:
@@ -122,7 +134,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func segmentedControlActionChanged(_ sender: Any) {
         switch(mySegmentegControl.selectedSegmentIndex){
         case 0:
-                selectedDate.text = SegmentViewController.selectedDate
+                selectedDate.text = typedDate
                 totalTicket.text = String(format: "%.2f", totalDate)
             break
         case 1:
@@ -171,7 +183,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
         let result = DBConnection().getTickets(date: SegmentViewController.selectedDate)
         if result.isEmpty == true {
             dailyList = []
-            noQueryAlert("") //llama cuando no hay consulta
+            noQueryAlert("", msg: "No se encontraron tickets en esta fecha") //llama cuando no hay consulta
         }else{
             
             dailyList = result
@@ -192,6 +204,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
         result.forEach{ r in
             totalMember += r["total"] as! Double
         }
+        if result.isEmpty {noQueryAlert("", msg: "No se encontraron tickets de este usuario")}
         
     }
     
@@ -201,7 +214,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
         familyTicketsList = result
         if result.isEmpty == true {
             familyTicketsList = []
-            noQueryAlert("")
+            noQueryAlert("", msg: "No se encontraron tickets de esta familia")
         }else{
             for r in result {
                 let total = r["total"]
@@ -212,8 +225,8 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     //tras la query de DataBase y no obtener resultado, salta este alert
-    func noQueryAlert(_ sender: Any) {
-        let alert = UIAlertController(title: "No hay tickets para este día", message: "", preferredStyle: .alert)
+    func noQueryAlert(_ sender: Any, msg:String) {
+        let alert = UIAlertController(title: msg, message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Cerrar ventana", style: .default) { (action) in}
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
