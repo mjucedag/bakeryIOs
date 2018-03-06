@@ -204,7 +204,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
         result.forEach{ r in
             totalMember += r["total"] as! Double
         }
-        if result.isEmpty {noQueryAlert("", msg: "No se encontraron tickets de este usuario")}
+        if result.isEmpty {noQueryAlert("", msg: "No se encontraron tickets de este empleado")}
         
     }
     
