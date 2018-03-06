@@ -24,7 +24,7 @@ class Product: Hashable{
         price = Double(json["price"] as? String ?? "-1")!
         description = json["description"] as? String ?? "No description for this product"
         image = UIImage(named: "logo")!
-        downloadImage()
+        //downloadImage()
     }
     
     init(id: Int, idFamily: Int, name: String, price: Double, description: String){

@@ -23,30 +23,30 @@ class MembersViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         return members[row]["login"] as? String ?? ""
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selected = row
+    }
+    
     
     @IBOutlet weak var titlePicker: UILabel!
     @IBOutlet weak var membersPicker: UIPickerView!
     @IBOutlet weak var okPicker: UIButton!
     var members = [[String:Any]]()
+    var selected = 0
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         membersPicker.delegate = self
         membersPicker.dataSource = self
         
         members = DBConnection().getData(table: "member")
-        
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func saveMember(_ sender: UIButton) {
         //vuelve hacia atrás
+        SegmentViewController.selectedMember = Int(members[selected]["id"] as? String ?? "0")!
+        SegmentViewController.selectedMemberName = members[selected]["login"] as? String ?? ""
         navigationController?.popToRootViewController(animated: true)
     }
     /*

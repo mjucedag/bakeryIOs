@@ -20,6 +20,7 @@
 		2D972A14204B1A1B004E8B14 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D972A13204B1A1B004E8B14 /* DetailViewController.swift */; };
 		33240380204836E700818DB5 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324037F204836E700818DB5 /* Ticket.swift */; };
 		333F572E2048137B00830AAF /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F572D2048137B00830AAF /* DataBase.swift */; };
+		3347CF00204EAFC4001FB4D9 /* QueriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3347CEFF204EAFC4001FB4D9 /* QueriesCell.swift */; };
 		4935C050204C769900CA7B4C /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935C04F204C769900CA7B4C /* TicketTableViewCell.swift */; };
 		4935C056204CBAE600CA7B4C /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935C055204CBAE500CA7B4C /* TicketTableViewController.swift */; };
 		A17022EE204CA5A300E2653F /* ByFamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17022ED204CA5A300E2653F /* ByFamilyViewController.swift */; };
@@ -68,6 +69,7 @@
 		2D972A13204B1A1B004E8B14 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3324037F204836E700818DB5 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		333F572D2048137B00830AAF /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
+		3347CEFF204EAFC4001FB4D9 /* QueriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueriesCell.swift; sourceTree = "<group>"; };
 		4935C04F204C769900CA7B4C /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		4935C055204CBAE500CA7B4C /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
 		A17022ED204CA5A300E2653F /* ByFamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByFamilyViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				C55CA021204D6937004AE92A /* queryByMember */,
 				C55CA01F204D68E8004AE92A /* queryByDay */,
 				2D1C1D09204C7E91002BA8A6 /* SegmentViewController.swift */,
+				3347CEFF204EAFC4001FB4D9 /* QueriesCell.swift */,
 			);
 			path = queries;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3347CF00204EAFC4001FB4D9 /* QueriesCell.swift in Sources */,
 				A17022F2204CAEEB00E2653F /* CategoryCollectionViewCell.swift in Sources */,
 				2D1C1D0A204C7E91002BA8A6 /* SegmentViewController.swift in Sources */,
 				2D77BE75204CDAB0009C06AE /* MembersViewController.swift in Sources */,

@@ -15,76 +15,53 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var selectedDate: UILabel!
     @IBOutlet weak var totalTicket: UILabel!
     
-    var dailyList:[String] = [] //tuplas de la consulta de tickets por dia
-    var memberTicketsList:[String] = [String]() //tuplas de la consulta de tickets por empleado
-    var familyTicketsList:[String] = [String]() //tuplas de la consulta de tickets por familia
+    @IBOutlet weak var title1: UILabel!
+    @IBOutlet weak var title2: UILabel!
+    @IBOutlet weak var title3: UILabel!
+    var dailyList:[[String:Any]] = [] //tuplas de la consulta de tickets por dia
+    var memberTicketsList:[[String:Any]] = [] //tuplas de la consulta de tickets por empleado
+    var familyTicketsList:[[String:Any]] = [] //tuplas de la consulta de tickets por familia
     
     public static var selectedDate = ""
     public static var selectedCategory: Int = 0
-    var selectedMember = 3
+    public static var selectedMember = 3
     
-    var totalMembers:Double = 0.00
+    public static var selectedMemberName = ""
+    public static var selectedCategoryName = ""
+    
+    var totalDate:Double = 0.00
+    var totalMember:Double = 0.00
+    var totalCategory:Double = 0.00
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
-        
-        let result = DBConnection().getTickets(member: selectedMember)
-        result.forEach{ r in
-            totalMembers += r["total"] as! Double
-            memberTicketsList.append(String(format: "Id:\(r["id"]!) \t Fecha: \(r["date"]!) \t Total: %.2f€", r["total"] as! Double))
-        }
-        print("tuplas \(result.count) membTickerts: \(memberTicketsList)")
-        
-        if(!SegmentViewController.selectedDate.isEmpty){
-            //Call API Rest
-        
-            let result = DBConnection().getTickets(date: SegmentViewController.selectedDate)
-            if result.isEmpty == true {
-                dailyList = []
-                noQueryAlert("") //llama cuando no hay consulta
-            }else{
-                var totalTicket = 0.0
-                dailyList = []
-                for r in result {
-                    let total = r["total"]
-                    totalTicket += total as! Double
-                    let id = r["id"]
-                    let str = "\t\tId: \t\t" + String(describing: id!) + "\t\t\t Total: \t\t" + String(describing: total!) + " €"
-                    dailyList.append(str)
-                }
-                self.totalTicket.text! = String (totalTicket)
-                myTableView.reloadData()
-                selectedDate.text=SegmentViewController.selectedDate
-                SegmentViewController.selectedDate = ""
-            }
+        switch(mySegmentegControl.selectedSegmentIndex){
+            case 0:
+                queryDate()
+                selectedDate.text = SegmentViewController.selectedDate
+                totalTicket.text = String(format: "%.2f", totalDate)
+            break
+            case 1:
+                queryMember()
+                selectedDate.text = SegmentViewController.selectedMemberName
+                totalTicket.text = String(format: "%.2f", totalMember)
+            break
+            case 2:
+                queryFamily()
+                selectedDate.text = SegmentViewController.selectedCategoryName
+                totalTicket.text = String(format: "%.2f", totalCategory)
+            break
+            default:
+            break
         }
         
-        print(SegmentViewController.selectedDate)
+        myTableView.reloadData()
         
-        if(SegmentViewController.selectedCategory != 0){
-            let result = DBConnection().getTickets(cat: SegmentViewController.selectedCategory)
-            if result.isEmpty == true {
-                familyTicketsList = []
-                noQueryAlert("")
-            }else{
-                var totalTicket = 0.0
-                familyTicketsList = []
-                for r in result {
-                    let quantity = r["quantity"]
-                    let name = r["name"]
-                    let total = r["total"]
-                    totalTicket += Double(total as? String ?? "0.00")!
-                    let str = String(describing: name!) + ". Cantidad: " + String(describing: quantity!) + " Subtotal: " + String(describing: total!)
-                    familyTicketsList.append(str)
-                }
-                self.totalTicket.text! = String (totalTicket)
-            }
-            myTableView.reloadData()
-        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        queryDate()
+        myTableView.reloadData()
         // Do any additional setup after loading the view.
     }
     
@@ -99,35 +76,42 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
         
         switch(mySegmentegControl.selectedSegmentIndex){
         case 0:
+            title1.text! = "ID"
+            title2.text! = ""
+            title3.text! = "SUBTOTAL"
             returnValue = dailyList.count
             break
         case 1:
-            
+            title1.text! = "ID"
+            title2.text! = "FECHA"
+            title3.text! = "SUBTOTAL"
             returnValue = memberTicketsList.count
             break
         case 2:
+            title1.text! = "PRODUCTO"
+            title2.text! = "CANTIDAD"
+            title3.text! = "SUBTOTAL"
             returnValue = familyTicketsList.count
             break
         default:
             break
         }
         return returnValue
-    
-    
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let myCell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        let myCell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! QueriesCell
+        
         
         switch(mySegmentegControl.selectedSegmentIndex){
         case 0:
-            myCell.textLabel!.text = dailyList[indexPath.row]
+            myCell.setData(type: 0, data: dailyList[indexPath.row])
             break
         case 1:
-            myCell.textLabel!.text = memberTicketsList[indexPath.row]
+            myCell.setData(type: 1, data: memberTicketsList[indexPath.row])
             break
         case 2:
-            myCell.textLabel!.text = familyTicketsList[indexPath.row]
+            myCell.setData(type: 2, data: familyTicketsList[indexPath.row])
             break
         default:
             break
@@ -136,20 +120,24 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     @IBAction func segmentedControlActionChanged(_ sender: Any) {
-        
         switch(mySegmentegControl.selectedSegmentIndex){
         case 0:
-            
+                selectedDate.text = SegmentViewController.selectedDate
+                totalTicket.text = String(format: "%.2f", totalDate)
             break
         case 1:
-            queryMember()
+                selectedDate.text = SegmentViewController.selectedMemberName
+                totalTicket.text = String(format: "%.2f", totalMember)
             break
         case 2:
-            
+                selectedDate.text = SegmentViewController.selectedCategoryName
+                totalTicket.text = String(format: "%.2f", totalCategory)
             break
         default:
+            
             break
         }
+        
         myTableView.reloadData()
     }
     
@@ -176,18 +164,53 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
         default:
             break
         }
+    }
+    
+    func queryDate(){
+        totalDate = 0.00
+        let result = DBConnection().getTickets(date: SegmentViewController.selectedDate)
+        if result.isEmpty == true {
+            dailyList = []
+            noQueryAlert("") //llama cuando no hay consulta
+        }else{
+            
+            dailyList = result
+            for r in result {
+                let total = r["total"]
+                totalDate += total as! Double
+            }
+            myTableView.reloadData()
+            selectedDate.text = SegmentViewController.selectedDate
+        }
         
     }
     
     func queryMember(){
-        totalMembers = 0.00
-        let result = DBConnection().getTickets(member: selectedMember)
+        totalMember = 0.00
+        let result = DBConnection().getTickets(member: SegmentViewController.selectedMember)
+        memberTicketsList = result
         result.forEach{ r in
-            totalMembers += r["total"] as! Double
-            memberTicketsList.append(String(format: "Id:\(r["id"]!) \t Fecha: \(r["date"]!) \t Total: %.2f€", r["total"] as! Double))
+            totalMember += r["total"] as! Double
         }
-        totalTicket.text = String(format: "%.2f", totalMembers)
+        
     }
+    
+    func queryFamily(){
+        totalCategory = 0.00
+        let result = DBConnection().getTickets(cat: SegmentViewController.selectedCategory)
+        familyTicketsList = result
+        if result.isEmpty == true {
+            familyTicketsList = []
+            noQueryAlert("")
+        }else{
+            for r in result {
+                let total = r["total"]
+                totalCategory += Double(total as? String ?? "0.00")!
+            }
+        }
+        selectedDate.text = SegmentViewController.selectedCategoryName
+    }
+    
     //tras la query de DataBase y no obtener resultado, salta este alert
     func noQueryAlert(_ sender: Any) {
         let alert = UIAlertController(title: "No hay tickets para este día", message: "", preferredStyle: .alert)
