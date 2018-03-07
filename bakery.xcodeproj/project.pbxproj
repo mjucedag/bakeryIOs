@@ -130,10 +130,9 @@
 		2D482F21201E0AF800967FCA /* bakery */ = {
 			isa = PBXGroup;
 			children = (
-				C55CA01C204D6836004AE92A /* storyboard */,
+				C50B1AA12045CD2300316F9B /* model */,
 				C55CA01B204D675E004AE92A /* view */,
 				C55CA01A204D673A004AE92A /* presenter */,
-				C50B1AA12045CD2300316F9B /* model */,
 				2D482F22201E0AF800967FCA /* AppDelegate.swift */,
 				2D482F29201E0AF800967FCA /* Assets.xcassets */,
 				2D482F2E201E0AF800967FCA /* Info.plist */,
@@ -196,6 +195,10 @@
 		C55CA01A204D673A004AE92A /* presenter */ = {
 			isa = PBXGroup;
 			children = (
+				C55CA020204D6915004AE92A /* queries */,
+				C55CA01E204D68C2004AE92A /* product */,
+				C55CA01D204D68B0004AE92A /* ticket */,
+				2D482F24201E0AF800967FCA /* LoginViewController.swift */,
 			);
 			path = presenter;
 			sourceTree = "<group>";
@@ -203,10 +206,7 @@
 		C55CA01B204D675E004AE92A /* view */ = {
 			isa = PBXGroup;
 			children = (
-				C55CA020204D6915004AE92A /* queries */,
-				C55CA01E204D68C2004AE92A /* product */,
-				C55CA01D204D68B0004AE92A /* ticket */,
-				2D482F24201E0AF800967FCA /* LoginViewController.swift */,
+				C55CA01C204D6836004AE92A /* storyboard */,
 			);
 			path = view;
 			sourceTree = "<group>";

@@ -20,7 +20,6 @@ class DatePopupViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    
     @IBAction func saveDate_TouchUpInside(_ sender: UIButton) {
         
         datePicker.datePickerMode = UIDatePickerMode.date
@@ -30,22 +29,9 @@ class DatePopupViewController: UIViewController {
         
         SegmentViewController.selectedDate = selectedDate
         navigationController?.popToRootViewController(animated: true)
-        // dismiss(animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

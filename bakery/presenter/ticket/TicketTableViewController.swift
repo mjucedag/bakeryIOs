@@ -26,8 +26,6 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
         productsKeys = Array(DataBase.cart.products.keys)
     }
     
-
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -83,23 +81,17 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
         // Return false if you do not want the specified item to be editable.
         return true
     }
- 
 
-    
     // Override to support editing the table view.
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            // Delete the row from the data source
+//
+//        } else if editingStyle == .insert {
+//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//        }
+//    }
 
- 
-
-    
     // Override to support conditional rearranging of the table view.
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Borrar") { (action, indexPath) in
@@ -107,21 +99,8 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
             tableView.deleteRows(at: [indexPath], with: .fade)
             self.refresh()
         }
-        
-        
         return [delete]
     }
- 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     //alerta para confirmar el borrado del ticket
     @IBAction func confirmDeleteTicket(_ sender: UIButton) {
@@ -136,6 +115,4 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.present(actionSheet, animated: true, completion: nil)
  }
-    
-
 }

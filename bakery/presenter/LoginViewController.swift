@@ -53,17 +53,11 @@ class LoginViewController: UIViewController {
         let user = tfUser.text!
         let password = tfPassword.text!
         DataBase.setCredentials(user: user, pass: password)
-        
-        
-        
+
         let connected = con.connect()
         if !connected {showError(msg: con.getError()); return false}
         
-        
         con.getProducts()
-        
-        print("productos = \(DataBase.products.count)")
-        
         
         return true
     }
@@ -86,7 +80,5 @@ class LoginViewController: UIViewController {
         error.isHidden = false
         error.text = msg
     }
-
-
 }
 

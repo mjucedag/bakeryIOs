@@ -23,9 +23,7 @@ class QueriesCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    
-    
+
     func setData(type: Int, data: [String:Any]){
         switch(type){
             case 0:
@@ -47,5 +45,4 @@ class QueriesCell: UITableViewCell {
                 break
         }
     }
-
 }

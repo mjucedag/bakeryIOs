@@ -194,7 +194,6 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
             myTableView.reloadData()
             selectedDate.text = SegmentViewController.selectedDate
         }
-        
     }
     
     func queryMember(){
@@ -205,7 +204,6 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
             totalMember += r["total"] as! Double
         }
         if result.isEmpty {noQueryAlert("", msg: "No se encontraron tickets de este empleado")}
-        
     }
     
     func queryFamily(){
@@ -231,15 +229,4 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

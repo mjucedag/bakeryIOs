@@ -10,25 +10,15 @@ import UIKit
 
 class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
-//    var idFamilia: [Int] = [Int]()
-//    var prodFamily: Int = -1
-    
     var arrayPan: [Product] = [Product]()
     var arrayBolleria: [Product] = [Product]()
     var arrayCroissant: [Product] = [Product]()
     var arrayNavidad: [Product] = [Product]()
     var arrayOtros: [Product] = [Product]()
     
-    //
     var productos: [[Product]] = []
     var productosFiltrados: [[Product]] = []
     var sections: [String] = [String]()
-    var seleccionPanArray: [Int] = [Int]()
-    var seleccionBolleriaArray: [Int] = [Int]()
-    var seleccionCroissantArray: [Int] = [Int]()
-    var seleccionNavidadArray: [Int] = [Int]()
-    var seleccionOtroArray: [Int] = [Int]()
-    //
     
     func filtraProd(){
         for producto in DataBase.products{
@@ -79,35 +69,21 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        collectionView.delegate? = self
-        //        collectionView.dataSource? = self
-        //        searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
-        
-        //
+
         getFamily()
         filtraProd()
-        //////
+
         productos.append(arrayPan)
         productos.append(arrayBolleria)
         productos.append(arrayCroissant)
         productos.append(arrayNavidad)
         productos.append(arrayOtros)
-        /**************/
-        seleccionPanArray = Array(repeating: 0, count: productos[0].count)
-        seleccionBolleriaArray = Array(repeating: 0, count: productos[1].count)
-        seleccionCroissantArray = Array(repeating: 0, count: productos[2].count)
-        seleccionNavidadArray = Array(repeating: 0, count: productos[3].count)
-        seleccionOtroArray = Array(repeating: 0, count: productos[4].count)
-        //////
         
     }
     
     // MARK: Delegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-//        print("celda seleccionada \(DataBase.products[indexPath.item].name)")
-//        prodFamily = DataBase.products[indexPath.item].idFamily
-//        print("producto de la familia: \(prodFamily)")
         
         let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let desVC = mainStoryboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
@@ -141,8 +117,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         let row = indexPath.row
         let producto = productos[section][row]
         
-//        cell.lbPrecio.text = producto.price
-        
         var textoLabel : String! = ""
         let image: UIImage!
 
@@ -157,8 +131,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
 
         cell.ivProduct.image = image
         cell.lbProduct.text = textoLabel
-        cell.lbPrecio.text = String(format: "%.2f€",  producto.price) 
-//        cell.lbProduct.text = producto.name
+        cell.lbPrecio.text = String(format: "%.2f€",  producto.price)
         
         cell.layer.borderWidth = 1.5
         cell.layer.borderColor = UIColor.black.cgColor
@@ -176,7 +149,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         header.imCategoria.image = imgCategorias[indexPath.section]
         header.lbCategoria.text = sections[indexPath.section]
         header.lbCategoria.textColor = UIColor.white
-//        header.backgroundColor = UIColor(red: 154/255.0, green: 188/255.0, blue: 254/255.0, alpha: 1.0)
         header.backgroundColor = UIColor.lightGray
         
         return header
@@ -201,8 +173,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
                 productosFiltrados.append(arrayProductFilterInSection)
                 arrayProductFilterInSection.removeAll()
             }
-           /* nombresFiltrados = productName.filter({$0.lowercased().contains(searchText.lowercased())})*/
-            //llenar imgFiltradas, para que se muestren al buscar
             collectionView.reloadData()
         }
     }

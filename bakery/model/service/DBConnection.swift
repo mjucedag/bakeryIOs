@@ -52,7 +52,6 @@ class DBConnection{
     
     func getTickets(cat:Int)->[[String:Any]]{
         let tickets = getData(table: "ticketcategory?id=\(cat)")
-        print("ticketcategory?id=\(cat)")
         return getTickets(data: tickets)
     }
     

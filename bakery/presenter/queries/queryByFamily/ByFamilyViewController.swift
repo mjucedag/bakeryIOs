@@ -65,5 +65,4 @@ class ByFamilyViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         return cell
     }
-    
 }

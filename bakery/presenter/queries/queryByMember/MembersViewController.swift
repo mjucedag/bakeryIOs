@@ -14,7 +14,6 @@ class MembersViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         return 1
     }
     
-    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return members.count
     }
@@ -26,7 +25,6 @@ class MembersViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selected = row
     }
-    
     
     @IBOutlet weak var titlePicker: UILabel!
     @IBOutlet weak var membersPicker: UIPickerView!
@@ -42,21 +40,10 @@ class MembersViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         members = DBConnection().getData(table: "member")
     }
 
-    
     @IBAction func saveMember(_ sender: UIButton) {
         //vuelve hacia atrás
         SegmentViewController.selectedMember = Int(members[selected]["id"] as? String ?? "0")!
         SegmentViewController.selectedMemberName = members[selected]["login"] as? String ?? ""
         navigationController?.popToRootViewController(animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
