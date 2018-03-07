@@ -22,8 +22,8 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     var price = 0.00
     var id = ""
     var familia = 0
-    var pickOption = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
-    
+    var pickOption = [Int](1...20)
+    var product: Product? = nil
     var categorias = ["Pan","Bolleria","Croissant","Navidad","Otros"]
     
     //AÑADIR PRODUCTO AL TICKET
@@ -44,9 +44,22 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         lbDescription.text! = desc
         lbPrice.text! = String(format:"%.2f", price)
         
+        
+        for p in DataBase.products {
+            if(p.id == Int(self.id)){
+                product = p
+            }
+        }
+        
         //hace el picker de cantidad
         let pickerView = UIPickerView()
+        
         pickerView.delegate = self
+        if let quantity = DataBase.cart.products[product!]{
+            pickerView.selectRow(quantity-1, inComponent: 0, animated: false)
+            tfPicker.text! = String(quantity)
+        }
+        
         tfPicker.inputView = pickerView
     }
     
@@ -67,32 +80,21 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     //titulo definido para cada fila
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickOption[row]
+        return String(pickOption[row])
     }
     //actualiza el campo de texto cuando se selecciona la fila
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        tfPicker.text = pickOption[row]
+        tfPicker.text = String(pickOption[row])
         tfPicker.endEditing(true)
     }
     
     func setDicctionaryOfPreviousTicket(){
         //Si existe ya almacenado ese ID Producto en nuestro Diccionario
         //Tan solo tengo que sumar la cantidad guardada, con la nueva cantidad seleccionada
-        var product: Product? = nil
-        for p in DataBase.products {
-            if(p.id == Int(self.id)){
-                product = p
-            }
-        }
         
-        if let countExists = DataBase.cart.products[product!]{
-            let countExistsInNumber = Int(countExists)
-            let newCountInNumber = Int(tfPicker.text!)
-            let sumCount = countExistsInNumber + newCountInNumber!
-            
-            DataBase.cart.products[product!] = sumCount;
-        }else{//Sino existe el producto como guardado, tan solo crear el nuevo Id Producto en el diccionario
+        
+        
             DataBase.cart.products[product!] = Int(tfPicker.text!);
-        }
+        
     }
 }

@@ -8,28 +8,28 @@
 
 import UIKit
 
-class TicketTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+class TicketTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
     
     @IBOutlet weak var totalCartLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tramitarButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var userLabel: UILabel!
     
     var productsKeys = Array<Product>()
-     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                
         tableView.delegate = self
         tableView.dataSource = self
+        userLabel.text! = DataBase.user.uppercased()
         
         productsKeys = Array(DataBase.cart.products.keys)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
@@ -70,7 +70,7 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
         let p = productsKeys[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell") as! TicketTableViewCell
-        cell.setProduct(p)
+        cell.setProduct(p, self)
         cell.drawShadow()
         return cell
     }
@@ -82,15 +82,6 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
         return true
     }
 
-    // Override to support editing the table view.
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            // Delete the row from the data source
-//
-//        } else if editingStyle == .insert {
-//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//        }
-//    }
 
     // Override to support conditional rearranging of the table view.
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -101,6 +92,10 @@ class TicketTableViewController: UIViewController, UITableViewDelegate, UITableV
         }
         return [delete]
     }
+    
+    // MARK: - Picker view data source
+    
+    
     
     //alerta para confirmar el borrado del ticket
     @IBAction func confirmDeleteTicket(_ sender: UIButton) {
