@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
         tfPassword.layer.borderWidth = 1.0
 
         //hacer la conexion
-        activityIndicator.startAnimating()
+        
         if !connect() {return}
         
         DataBase.cart = Ticket()

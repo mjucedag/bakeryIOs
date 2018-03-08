@@ -22,7 +22,7 @@ class SegmentViewController: UIViewController, UITableViewDataSource, UITableVie
     var memberTicketsList:[[String:Any]] = [] //tuplas de la consulta de tickets por empleado
     var familyTicketsList:[[String:Any]] = [] //tuplas de la consulta de tickets por familia
     
-    public static var selectedDate: String = "2018/03/06"
+    public static var selectedDate: String = DataBase.cart.date
     
     public static var selectedCategory: Int = 0
     public static var selectedMember = 3

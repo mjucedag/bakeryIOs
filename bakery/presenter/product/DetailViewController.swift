@@ -29,7 +29,9 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     //AÑADIR PRODUCTO AL TICKET
     @IBAction func onAlertTapped(_ sender: Any) {
          let alert = UIAlertController(title: "Agregado al ticket", message: "", preferredStyle: .alert)
-         let action = UIAlertAction(title: "Cerrar ventana", style: .default) { (action) in self.setDicctionaryOfPreviousTicket() }
+        let action = UIAlertAction(title: "Cerrar ventana", style: .default) { (action) in self.setDicctionaryOfPreviousTicket()
+            self.navigationController?.popViewController(animated: true)
+        }
          alert.addAction(action)
          present(alert, animated: true, completion: nil)
     }

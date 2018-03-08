@@ -87,7 +87,6 @@ class DBConnection{
         _ = query(request)
     }
     
-    
     func query(_ request:NSMutableURLRequest) -> [[String:Any]]{
         let group = DispatchGroup()
         let colaGlobal = DispatchQueue.global()
@@ -131,8 +130,6 @@ class DBConnection{
         return results
     }
     
-    
-    
     public func getError()->String{
         switch conError {
             case 0: return "Error"
@@ -143,7 +140,7 @@ class DBConnection{
             
             case 501:  return "Incorrect token"
             
-            case 501: return "Token expired"
+            case 502: return "Token expired"
             default: return ""
         }
     }
