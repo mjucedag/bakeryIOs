@@ -91,9 +91,6 @@ class DetailViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     func setDicctionaryOfPreviousTicket(){
         //Si existe ya almacenado ese ID Producto en nuestro Diccionario
         //Tan solo tengo que sumar la cantidad guardada, con la nueva cantidad seleccionada
-        
-        
-        
             DataBase.cart.products[product!] = Int(tfPicker.text!);
         
     }
