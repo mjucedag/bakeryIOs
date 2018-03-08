@@ -19,6 +19,11 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: UIButton) {
         error.isHidden = true
         error.text = ""
+        tfUser.layer.borderColor = UIColor.white.cgColor
+        tfUser.layer.borderWidth = 1.0
+        
+        tfPassword.layer.borderColor = UIColor.white.cgColor
+        tfPassword.layer.borderWidth = 1.0
         guard tfUser.text != "" && tfPassword.text != "" else {
             if tfUser.text == ""{
                 tfUser.layer.borderColor = UIColor.red.cgColor
@@ -33,11 +38,7 @@ class LoginViewController: UIViewController {
             error.isHidden = false
             return
         }
-        tfUser.layer.borderColor = UIColor.white.cgColor
-        tfUser.layer.borderWidth = 1.0
         
-        tfPassword.layer.borderColor = UIColor.white.cgColor
-        tfPassword.layer.borderWidth = 1.0
 
         //hacer la conexion
         
